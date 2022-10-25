@@ -1,0 +1,75 @@
+# Query: Photo
+# ContextLines: 1
+
+22 results - 5 files
+
+server.js:
+  11  const mainRoutes = require("./routes/main");
+  12: const photoRoutes = require("./routes/photo");
+  13  const commentRoutes = require("./routes/comment");
+
+  58  app.use("/", mainRoutes);
+  59: app.use("/photos", postRoutes);
+  60  app.use("/comment", commentRoutes);
+
+controllers\photos.js:
+   1  const cloudinary = require("../middleware/cloudinary");
+   2: const Photo = require("../models/Recipe");
+   3  const Comment = require("../models/Comments");
+
+  10        //console.log(req.user) to see everything
+  11:       //Grabbing just the photos of the logged in user
+  12:       const posts = await Photo.find({ user: req.user.id });
+  13        //Sending post data from mongodb and user data to ejs template
+
+  20      try {
+  21:       const posts = await Photo.find().sort({ createdAt: "desc" }).lean();
+  22        res.render("feed.ejs", { posts: posts });
+
+  29        const comment = await Comment.find({ postId: req.params.id });
+  30:       const post = await Photo.findById(req.params.id);
+  31        res.render("post.ejs", { post: post, user: req.user, comment: comment });
+
+  40  
+  41:       await Photo.create({
+  42          title: req.body.title,
+
+  56      try {
+  57:       await Photo.findOneAndUpdate(
+  58          { _id: req.params.id },
+
+  71        // Find post by id
+  72:       let post = await Photo.findById({ _id: req.params.id });
+  73        // Delete image from cloudinary
+  74:       await cloudinary.uploader.destroy(photo.cloudinaryId);
+  75        // Delete post from db
+  76:       await Photo.remove({ _id: req.params.id });
+  77        console.log("Deleted Post");
+
+models\Recipe.js:
+   2  
+   3: const PhotoSchema = new mongoose.Schema({
+   4    name: {
+
+  38  //mongoDB collection named here - will give lowercase plural of name
+  39: module.exports = mongoose.model("Photo", PostSchema);
+
+routes\main.js:
+  4  const homeController = require("../controllers/home");
+  5: const postsController = require("../controllers/photos");
+  6  const { ensureAuth, ensureGuest } = require("../middleware/auth");
+
+routes\photos.js:
+   3  const upload = require("../middleware/multer");
+   4: const photosController = require("../controllers/photos");
+   5  const { ensureAuth, ensureGuest } = require("../middleware/auth");
+
+   7  //Post Routes - simplified for now
+   8: router.get("/:id", ensureAuth, photosController.getPost);
+   9  
+  10: router.post("/createPost", upload.single("file"), photosController.createPost);
+  11  
+  12: router.put("/likePost/:id", photosController.likePost);
+  13  
+  14: router.delete("/deletePost/:id", photosController.deletePost);
+  15  
