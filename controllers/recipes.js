@@ -19,8 +19,8 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Recipe.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
+      res.render("feed.ejs", { recipes: recipes, user: req.user });
     } catch (err) {
       console.log(err);
     }

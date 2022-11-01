@@ -1,15 +1,22 @@
 <%- include('partials/header') -%>
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-    </div>
-  </div>  
+<div class="flex flex-col w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
+  <div class="flex justify-between items-center justify-between">
+    <p class="flex-2 my-8 text-7xl font-bold text-dark-slate-gray"><strong><em><%= user.userName %>'s</strong></em> feed</p>
+    <p class="flex-1 text-center"><%= user.email %></p>    
+  </div>
+  <div class="flex flex-row flex-1 items-center justify-between">
+    <a href="/profile" class=" flex-1 btn btn-outline btn-success">Go to Profile</a>
+    <a class="btn btn-outline btn-success flex-1" href="/favorites">Return to Favorites</a>
+    <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a>
+  </div>
+  <ul class="flex flex-wrap flex-col">
+      <% for(var i=0; i<recipes.length; i++) {%>
+        <li class="justify-between p-4 flex-1 card bg-pale-spring-bud shadow-xl">
+          <a href="/recipe/<%= recipes[i]._id%>">
+            <img class="inline" src="<%= recipes[i].image%>">
+          </a>
+        </li>
+      <% } %>
+  </ul>
+</div>
 <%- include('partials/footer') -%>
