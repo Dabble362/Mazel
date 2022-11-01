@@ -9,29 +9,37 @@
       messages.info.forEach( el => { %>
       <div class="alert alert-info"><%= el.msg %></div>
       <% }) %> <% } %>
-      <form action="/login" method="POST">
+      <form
+        action="/login"
+        method="POST"
+        class="flex flex-col justify-center items-center h-screen"
+      >
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">
-            Email address
+          <label for="exampleInputEmail1" class="label">
+            <span class="label-text">Email address</span>
           </label>
           <input
             type="email"
-            class="form-control"
+            class="bg-white input input-bordered w-full max-w-xs"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name="email"
           />
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="exampleInputPassword1" class="label">
+            <span class="label-text">Password</span>
+          </label>
           <input
             type="password"
-            class="form-control"
+            class="bg-white input input-bordered w-full max-w-xs"
             id="exampleInputPassword1"
             name="password"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-outline btn-success">
+          Submit
+        </button>
       </form>
     </section>
   </div>
