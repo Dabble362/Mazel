@@ -1,74 +1,75 @@
 <%- include('partials/header') -%>
-<main class="container">
-  <div class="row justify-content-center">
-    <section class="col-6 mt-5">
-      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-      <div class="alert alert-danger"><%= el.msg %></div>
-      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-      messages.info.forEach( el => { %>
-      <div class="alert alert-info"><%= el.msg %></div>
-      <% }) %> <% } %>
-      <form
-        action="/signup"
-        method="POST"
-        class="flex flex-col justify-center items-center w-screen h-screen"
-      >
-        <div class="mb-3">
-          <label for="userName" class="label">
-            <span class="label-text text-dark-slate-gray">User Name</span>
-          </label>
-          <input
-            type="text"
-            class="bg-white input input-bordered w-full max-w-xs"
-            id="userName"
-            name="userName"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="label">
-            <span class="label-text text-dark-slate-gray">Email address</span>
-          </label>
-          <input
-            type="email"
-            class="bg-white input input-bordered w-full max-w-xs"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            name="email"
-          />
-          <div id="emailHelp" class="form-text text-dark-slate-gray">
-            We'll never share your email with anyone else.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="password" class="label">
-            <span class="label-text text-dark-slate-gray">Password</span>
-          </label>
-          <input
-            type="password"
-            class="bg-white input input-bordered w-full max-w-xs"
-            id="password"
-            name="password"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="confirmPassword" class="label">
-            <span class="label-text text-dark-slate-gray"
-              >Confirm Password</span
-            >
-          </label>
-          <input
-            type="password"
-            class="bg-white input input-bordered w-full max-w-xs"
-            id="confirmPassword"
-            name="confirmPassword"
-          />
-        </div>
-        <button type="submit" class="btn btn-outline btn-success">
-          Submit
-        </button>
-      </form>
-    </section>
-  </div>
-</main>
+
+<section class="flex flex-row items-center justify-center w-screen h-screen">
+  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+  <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
+  el => { %>
+  <div class="alert alert-info"><%= el.msg %></div>
+  <% }) %> <% } %>
+  <form
+    action="/signup"
+    method="POST"
+    class="flex flex-col justify-center items-center mx-auto my-auto p-16 shadow-xl shadow-max-yel-green-500/50"
+  >
+    <div class="mb-3">
+      <label for="userName" class="label">
+        <span class="label-text text-lg font-bold text-dark-slate-gray"
+          >User Name</span
+        >
+      </label>
+      <input
+        type="text"
+        class="bg-white input input-bordered w-full width-w-max"
+        id="userName"
+        name="userName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="label">
+        <span class="label-text text-lg font-bold text-dark-slate-gray"
+          >Email address</span
+        >
+      </label>
+      <input
+        type="email"
+        class="bg-white input input-bordered w-full width-w-max"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="email"
+      />
+      <div id="emailHelp" class="form-text text-dark-slate-gray">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="label">
+        <span class="label-text text-lg font-bold text-dark-slate-gray"
+          >Password</span
+        >
+      </label>
+      <input
+        type="password"
+        class="bg-white input input-bordered w-full width-w-max"
+        id="password"
+        name="password"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="confirmPassword" class="label">
+        <span class="label-text text-lg font-bold text-dark-slate-gray"
+          >Confirm Password</span
+        >
+      </label>
+      <input
+        type="password"
+        class="bg-white input input-bordered w-full width-w-max"
+        id="confirmPassword"
+        name="confirmPassword"
+      />
+    </div>
+    <button type="submit" class="btn btn-outline btn-success">Submit</button>
+  </form>
+</section>
 
 <%- include('partials/footer') -%>

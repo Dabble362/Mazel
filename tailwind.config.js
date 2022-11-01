@@ -12,6 +12,8 @@ module.exports = {
         "pale-spring-bud": "#E6E7A7",
         "dark-slate-gray": "#35524A",
         "caput-mortuum": "#5E3023",
+        "success-green": "#36d399",
+        "max-yel-green": "#DEEf57",
       },
     },
   },
