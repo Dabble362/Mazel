@@ -2661,26 +2661,8 @@ html {
   margin-bottom: 2rem;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .mt-5 {
   margin-top: 1.25rem;
-}
-
-.mb-3 {
-  margin-bottom: 0.75rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
 }
 
 .mb-2 {
@@ -2689,6 +2671,10 @@ html {
 
 .mb-5 {
   margin-bottom: 1.25rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 
 .flex {
@@ -2741,19 +2727,14 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-key-lime {
-  --tw-bg-opacity: 1;
-  background-color: rgb(237 239 138 / var(--tw-bg-opacity));
-}
-
-.bg-pale-spring-bud {
-  --tw-bg-opacity: 1;
-  background-color: rgb(230 231 167 / var(--tw-bg-opacity));
-}
-
 .bg-eaton-blue {
   --tw-bg-opacity: 1;
   background-color: rgb(153 209 159 / var(--tw-bg-opacity));
+}
+
+.bg-key-lime {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 239 138 / var(--tw-bg-opacity));
 }
 
 .text-9xl {
