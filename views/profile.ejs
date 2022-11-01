@@ -1,16 +1,14 @@
 <%- include('partials/header') -%>
-<div class="flex w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
-  <div class="row mt-5 ">
-      <div class="col-6">
-          <div class="flex justify-between items-center justify-between">
-              <p class="flex-2 my-8 text-7xl font-bold text-dark-slate-gray"><strong><em>Shalom</strong> <%= user.userName %>!</em></p>
-              <p class="flex-1 text-center"><%= user.email %></p>
-              <a href="/logout" class="flex-1 btn btn-outline btn-success">Logout</a>
-          </div>
-          <div class="py-2 px-2 my-2 bg-pale-spring-bud">
-            <h2 class="text-caput-mortuum font-bold text-2xl">Have a recipe to share?</h2>
+<div class="flex flex-col w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
+  <div class="flex justify-between items-center justify-between">
+    <p class="flex-2 my-8 text-7xl font-bold text-dark-slate-gray"><strong><em>Shalom</strong> <%= user.userName %>!</em></p>
+    <p class="flex-1 text-center"><%= user.email %></p>    
+  </div>
+  <!--form start-->
+  <div class="flex justify-end">
+      <div class="py-2 px-2 my-2 bg-pale-spring-bud w-full mx-auto flex-3">
+          <h2 class="text-caput-mortuum font-bold text-2xl">Have a recipe to share?</h2>
             <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
-              
               <div class="form-control w-full max-w-xs">
                 <label for="name" class="label">
                   <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
@@ -29,7 +27,6 @@
                 </label>
                 <textarea class="textarea textarea-bordered h-24 bg-white" id="directions" name="directions"></textarea>
               </div>
-              <!---->
               <div class="mb-3">
                 <label for="imgUpload" class="form-label text-lg font-bold text-dark-slate-gray">Image</label>
                 <input type="file" id="imageUpload" name="file" class="form-control
@@ -43,33 +40,34 @@
               </div>
               <button type="submit" class="btn btn-outline btn-success" value="Upload">Add A Recipe</button>
             </form>
+        </div>
+          <div class="flex flex-col flex-1 items-center justify-between">
+            <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a>
+            <a href="/favorites" class=" flex-1 btn btn-outline btn-success">Go to Favorites</a>
+            <a class="btn btn-outline btn-success flex-1" href="/feed">Return to Feed</a>
           </div>
-      </div>
-      <div class="col-6">
-        <div class="flex flex-row justify-between">
-        <div class="flex flex-row items-center">
-          <h2 class="my-4 text-4xl font-bold text-dark-slate-gray border-b-4 border-eaton-blue">My Recipes</h2>
-          <i class="inline fa-solid fa-pen-to-square fa-2xl pl-4 color-caput-maruum"></i>
-        </div>
-        <a href="/favorites" class="btn btn-outline btn-success">Go to Favorites</a>
-        </div>
-        <ul class="flex flex-wrap flex-row">
-        <% for(var i=0; i<recipes.length; i++) {%>
-          <li class="justify-between p-4 flex-1">
-            <a href="/recipe/<%= recipes[i]._id%>">
-              <h2 class="text-caput-mortuum font-bold text-2xl"><%= recipes[i].name %> </h2>
-              <img class="inline" src="<%= recipes[i].image%>">
-              <p class="text-dark-slate-gray text-2xl"><%= recipes[i].ingredients %> </p>
-              <p class="text-dark-slate-gray text-2xl" ><%= recipes[i].directions %></p>
-            </a>
-          </li>
-        <% } %>
-        </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn btn-outline btn-success" href="/feed">Return to Feed</a>
-        </div>  
-      </div>  
-    </div>
   </div>
+  <!--form end-->
+</div>
+<div class="flex flex-row justify-between">
+  <div class="flex flex-col w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
+    <div class="flex">
+      <h2 class="my-4 text-4xl font-bold text-dark-slate-gray border-b-4 border-eaton-blue">My Recipes</h2>
+    </div>
+    <ul class="flex flex-wrap flex-row">
+    <% for(var i=0; i<recipes.length; i++) {%>
+      <li class="justify-between p-4 flex-1 card bg-pale-spring-bud shadow-xl">
+        <div class="card-body">
+        <a href="/recipe/<%= recipes[i]._id%>">
+          <h2 class="text-caput-mortuum font-bold text-2xl card-title"><%= recipes[i].name %> </h2>
+          <figure><img class="inline" src="<%= recipes[i].image%>"></figure>
+          <p class="text-dark-slate-gray text-2xl"><%= recipes[i].ingredients %> </p>
+          <p class="text-dark-slate-gray text-2xl" ><%= recipes[i].directions %></p>
+        </a>
+        </div>
+      </li>
+     <% } %>
+    </ul>
+  </div>  
 </div>
 <%- include('partials/footer') -%>
