@@ -1,63 +1,76 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <h2><%= recipe.name %></h2>
+<div class="">
+
+  <div class="flex flex-col w-3/4 mx-auto items-center">
+    <!-- recipe name, image, and options-->
+    <div class="flex flex-col">
+      <h2 class="my-8 text-7xl font-bold text-dark-slate-gray"><%= recipe.name %></h2><!-- by user name at a later time-->
       <img class="img-fluid" src="<%= recipe.image%>" />
-      <div class="row justify-content-between">
+      <div class="flex mx-auto flex-row w-11/12 py-2 px-2 my-2 bg-pale-spring-bud">
+        <!-- Like a recipe button -->
         <form
-          class="col-1"
+          class="flex flex-1"
           action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT"
           method="POST"
         >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
+          <button class="btn btn-outline btn-success fa fa-heart" type="submit"></button>
+          <!-- Display likes -->
+          <h3 class="my-auto pl-4 text-2xl font-bold text-dark-slate-gray">Likes: <%= recipe.likes %></h3>
         </form>
+        <!-- Favorite a recipe button-->
         <form
-        class="col-1"
+        class="flex-1"
         action="/recipe/favoriteRecipe/<%= recipe.id %>"
         method="POST"
       >
-        <button class="btn btn-primary fa fa-star" type="submit"></button>
-      </form>
-        <h3 class="col-3">Likes: <%= recipe.likes %></h3>
+        <button class="btn btn-outline btn-success" type="submit">Add to Favorites</button>
+        </form>
+        <!-- Delete recipe button-->
         <%if(recipe.user == user.id){ %>
         <form
           action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE"
           method="POST"
-          class="col-3"
+          class="flex justify-end flex-1"
         >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
+          <button class="btn btn-outline btn-success fa fa-trash" type="submit"></button>
         </form>
         <%}%>
       </div>
     </div>
-    <div class="col-3 mt-5">
-      <p><%= recipe.ingredients %></p>
+    <!-- recipe ingredients -->
+    <div class="flex flex-col w-9/12">
+      <h3 class="border-b-2 text-3xl font-bold border-eaton-blue text-dark-slate-gray pb-3">Ingredients</h3>
+      <p class="text-dark-slate-gray text-lg"><%= recipe.ingredients %></p>
     </div>
-    <div class="col-3 mt-5">
-      <p><%= recipe.directions %></p>
+    <!-- recipe directions -->
+    <div class="flex flex-col w-9/12">
+      <h3 class="border-b-2 text-3xl font-bold border-eaton-blue text-dark-slate-gray pb-3">Instructions</h3>
+      <p class="text-dark-slate-gray text-lg"><%= recipe.directions %></p>
     </div>
+    <!-- recipe comments -->
+    <div class="flex flex-col w-9/12">
+    <h3 class="border-b-2 text-3xl font-bold border-eaton-blue text-dark-slate-gray pb-3">Comments</h3>
     <% for(var i=0; i<comment.length; i++) {%>
-      <li class="col-6 justify-content-between mt-5">
+      <li class="text-dark-slate-gray text-lg">
         <%= comment[i].comment %>
       </li>
     <% } %>
     <!--comment form-->
-    <div class="mt-5">
-      <h2>comment</h2>
+    <div class="flex flex-col">
       <form action="/comment/createComment/<%= recipe.id %>" method="POST">
-        <div class="mb-3">
-          <input type="text" class="form-control" id="comment" name="comment" />
+        <div class="text-lg text-dark-slate-gray border-t-2 border-eaton-blue">
+          <input type="text" class="bg-white input input-bordered w-full max-w-xs my-4" id="comment" name="comment" placeholder="Enter comment here!" />
         </div>
-        <button type="submit" class="btn btn-primary" value="Upload">
-          Submit
+        <button type="submit" class="btn btn-outline btn-success" value="Upload">
+          ADD A COMMENT
         </button>
       </form>
     </div>
+  </div>
     <!--  -->
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+    <div class="">
+      <a class="btn btn-outline btn-success" href="/profile">Return to Profile</a>
+      <a class="btn btn-outline btn-success" href="/feed">Return to Feed</a>
     </div>
   </div>
 </div>

@@ -10,6 +10,8 @@ module.exports = {
         "key-lime": "#EDEF8A",
         "eaton-blue": "#99D19F",
         "pale-spring-bud": "#E6E7A7",
+        "dark-slate-gray": "#35524A",
+        "caput-mortuum": "#5E3023",
       },
     },
   },
