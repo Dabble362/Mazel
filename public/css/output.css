@@ -1867,6 +1867,16 @@ html {
   color: rgb(237 239 138 / var(--tw-text-opacity));
 }
 
+.placeholder-zinc-700::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(63 63 70 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-zinc-700::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(63 63 70 / var(--tw-placeholder-opacity));
+}
+
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
@@ -1888,6 +1898,11 @@ html {
 .file\:bg-violet-50::file-selector-button {
   --tw-bg-opacity: 1;
   background-color: rgb(245 243 255 / var(--tw-bg-opacity));
+}
+
+.file\:bg-forest-green::file-selector-button {
+  --tw-bg-opacity: 1;
+  background-color: rgb(7 61 0 / var(--tw-bg-opacity));
 }
 
 .file\:py-2::file-selector-button {

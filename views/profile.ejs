@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
 <div class="flex flex-col w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
   <div class="flex sm:flex-col justify-between items-center justify-between">
-    <p class="flex-2 my-8 text-7xl sm:text-lg font-bold text-dark-slate-gray"><strong><em>Shalom</strong> <%= user.userName %>!</em></p>
+    <p class="flex-2 my-8 text-7xl font-bold text-dark-slate-gray"><strong><em>Shalom</strong> <%= user.userName %>!</em></p>
     <p class="flex-1 text-center"><%= user.email %></p>    
   </div>
   <!--form start-->
@@ -13,13 +13,13 @@
                 <label for="name" class="label">
                   <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
                 </label>
-                <input type="text" id="name" name="name" placeholder="recipe name" class="input input-bordered w-full max-w-xs bg-white" />
+                <input type="text" id="name" name="name" placeholder="recipe name" class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
               </div>
               <div class="form-control">
                 <label for="ingredients" class="label">
                   <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
                 </label> 
-                <textarea id="ingredients" name="ingredients" class="textarea textarea-bordered h-24 bg-white" placeholder="Ingredients"></textarea>
+                <textarea id="ingredients" name="ingredients" class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700" placeholder="Ingredients"></textarea>
               </div>
               <div class="form-control">
                 <label for="directions" class="form-label">
