@@ -39,17 +39,17 @@
     </div>
     <!-- recipe ingredients -->
     <div class="flex flex-col w-9/12">
-      <h3 class="border-b-2 text-3xl font-bold border-eaton-blue text-dark-slate-gray pb-3">Ingredients</h3>
+      <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Ingredients</h3>
       <p class="text-dark-slate-gray text-lg"><%= recipe.ingredients %></p>
     </div>
     <!-- recipe directions -->
     <div class="flex flex-col w-9/12">
-      <h3 class="border-b-2 text-3xl font-bold border-eaton-blue text-dark-slate-gray pb-3">Instructions</h3>
+      <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Instructions</h3>
       <p class="text-dark-slate-gray text-lg"><%= recipe.directions %></p>
     </div>
     <!-- recipe comments -->
     <div class="flex flex-col w-9/12">
-    <h3 class="border-b-2 text-3xl font-bold border-eaton-blue text-dark-slate-gray pb-3">Comments</h3>
+    <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Comments</h3>
     <% for(var i=0; i<comment.length; i++) {%>
       <li class="text-dark-slate-gray text-lg">
         <%= comment[i].comment %>
@@ -58,7 +58,7 @@
     <!--comment form-->
     <div class="flex flex-col">
       <form action="/comment/createComment/<%= recipe.id %>" method="POST">
-        <div class="text-lg text-dark-slate-gray border-t-2 border-eaton-blue">
+        <div class="text-lg text-dark-slate-gray border-t-2 border-forest-green">
           <input type="text" class="bg-white input input-bordered w-full max-w-xs my-4" id="comment" name="comment" placeholder="Enter comment here!" />
         </div>
         <button type="submit" class="btn btn-outline btn-success" value="Upload">

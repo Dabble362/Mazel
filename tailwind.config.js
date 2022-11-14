@@ -14,7 +14,7 @@ module.exports = {
     extend: {
       colors: {
         "key-lime": "#EDEF8A",
-        "eaton-blue": "#99D19F",
+        "forest-green": "#073D00",
         "pale-spring-bud": "#E6E7A7",
         "dark-slate-gray": "#35524A",
         "caput-mortuum": "#5E3023",
@@ -22,6 +22,15 @@ module.exports = {
         "max-yel-green": "#DEEf57",
       },
     },
+  },
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          success: "#073D00",
+        },
+      },
+    ],
   },
   plugins: [require("daisyui")],
 };
