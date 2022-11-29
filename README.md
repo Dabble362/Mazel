@@ -15,12 +15,32 @@
 <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white">
 <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
 </p>
+<p>
+Used Figma to draw up initial design and Miro to visualize the flow and models used.  The JavaScript started with a solid API framework with authentication. 
+MongoDB is being used here as the database. Cloudinary to handle the images. My first jump into TailwindCSS and I'm a fan.  Heroku to host the lovely thing.
+</p>
+
+<p>Check it out here: <a href="https://mazel.herokuapp.com/">Mazel</a></p>
+
+<h2>Things to add:</h2>
+<ul>
+  <li>Search Functionality</li>
+  <li>Recipe cards for neatness</li>
+  </ul>
+  
+  <h2>Known issues:</h2>
+<ul>
+  <li>You can favorite more than once</li>
+  <li>Search bar isn't up to par</li>
+  </ul>
+
+<h2>How to get it up and running</h2>
 
 `npm install`
 
 ---
 
-# Things to add
+
 
 - Create a `.env` file in config folder and add the following as `key = value`
   - PORT = 2121 (can be any port example: 3000)
