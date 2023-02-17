@@ -1,3 +1,4 @@
+<img src="https://i.ibb.co/vmpp43P/pexels-lucie-liz-mazel-banner.jpg" alt="pexels-lucie-liz-mazel-banner" border="0">
 # Install
 
 `npm install`
