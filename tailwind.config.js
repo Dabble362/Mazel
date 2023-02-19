@@ -6,7 +6,7 @@ module.exports = {
       sm: "400px",
       md: "800px",
       lg: "1024px",
-      xl: "1536",
+      xl: "1760",
     },
     maxWidth: {
       eighty: "80%",

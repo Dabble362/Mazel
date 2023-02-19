@@ -578,9 +578,9 @@ html {
   }
 }
 
-@media (min-width: 1536) {
+@media (min-width: 1760) {
   .container {
-    max-width: 1536;
+    max-width: 1760;
   }
 }
 
@@ -1651,14 +1651,6 @@ html {
   background-image: url('../imgs/pexels-elle-hughes-1660030.jpg');
 }
 
-.bg-auto {
-  background-size: auto;
-}
-
-.bg-contain {
-  background-size: contain;
-}
-
 .bg-cover {
   background-size: cover;
 }
@@ -1821,5 +1813,15 @@ html {
 @media (min-width: 400px) {
   .sm\:flex-col {
     flex-direction: column;
+  }
+}
+
+@media (min-width: 1760) {
+  .xl\:flex {
+    display: flex;
+  }
+
+  .xl\:flex-1 {
+    flex: 1 1 0%;
   }
 }

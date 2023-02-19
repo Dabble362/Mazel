@@ -1,36 +1,39 @@
 <%- include('partials/header') -%>
 
-<section class="flex justify-center items-center h-screen">
-  <div class="flex flex-col p-14 shadow-xl shadow-max-yel-green-500/50">
-    <h1 class="my-8 text-9xl font-bold text-dark-slate-gray">Mazel</h1>
-    <figcaption class="mb-2 text-dark-slate-gray">
-      A place to find, talk about, and save the recipes you love
-    </figcaption>
-    <form method="get" name="" action="#" class="flex items-end mb-5">
-      <div class="form-control w-9/12 max-w-xs">
-        <label class="label">
-          <span class="label-text text-dark-slate-gray"
-            >What are you looking for?</span
-          >
-        </label>
-        <input
-          type="text"
-          placeholder="Search doesn't work at the moment!"
-          class="bg-white input input-bordered w-full max-w-xs"
-        />
+<div class="flex">
+  <section class="flex-1"></section>
+  <section class="flex flex-1 justify-center items-center h-screen">
+    <div class="flex flex-col p-14 shadow-xl shadow-max-yel-green-500/50">
+      <h1 class="my-8 text-9xl font-bold text-dark-slate-gray">Mazel</h1>
+      <figcaption class="mb-2 text-dark-slate-gray">
+        A place to find, talk about, and save the recipes you love
+      </figcaption>
+      <form method="get" name="" action="#" class="flex items-end mb-5">
+        <div class="form-control w-9/12 max-w-xs">
+          <label class="label">
+            <span class="label-text text-dark-slate-gray"
+              >What are you looking for?</span
+            >
+          </label>
+          <input
+            type="text"
+            placeholder="Search doesn't work at the moment!"
+            class="bg-white input input-bordered w-full max-w-xs"
+          />
+        </div>
+        <button
+          class="text-key-lime btn rounded-r-lg w-5 bg-forest-green border-none hover:bg-yellow-400"
+          type="submit"
+        >
+          GO
+        </button>
+      </form>
+      <div>
+        <a class="btn btn-outline btn-success" href="/login"> Login</a>
+        <a class="btn btn-outline btn-success" href="/signup"> Signup</a>
       </div>
-      <button
-        class="text-key-lime btn rounded-r-lg w-5 bg-forest-green border-none hover:bg-yellow-400"
-        type="submit"
-      >
-        GO
-      </button>
-    </form>
-    <div>
-      <a class="btn btn-outline btn-success" href="/login"> Login</a>
-      <a class="btn btn-outline btn-success" href="/signup"> Signup</a>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <%- include('partials/footer') -%>
