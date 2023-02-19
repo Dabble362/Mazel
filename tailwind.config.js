@@ -21,6 +21,9 @@ module.exports = {
         "success-green": "#36d399",
         "max-yel-green": "#DEEf57",
       },
+      backgroundImage: {
+        "hero-background": "url('../imgs/pexels-elle-hughes-1660030.jpg')",
+      },
     },
   },
   daisyui: {
