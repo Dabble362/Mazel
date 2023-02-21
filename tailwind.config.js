@@ -3,6 +3,7 @@ module.exports = {
   content: ["./views/*.ejs", "./views/partials/*.ejs"],
   theme: {
     screens: {
+      xs: "280px",
       sm: "400px",
       md: "800px",
       lg: "1024px",
