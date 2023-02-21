@@ -6,7 +6,7 @@ module.exports = {
       sm: "400px",
       md: "800px",
       lg: "1024px",
-      xl: "1760",
+      xl: "1500px",
     },
     maxWidth: {
       eighty: "80%",
@@ -22,8 +22,9 @@ module.exports = {
         "max-yel-green": "#DEEf57",
       },
       backgroundImage: {
-        "hero-background": "url('../imgs/pexels-elle-hughes-1660030.jpg')",
+        "xl-background": "url('../imgs/pexels-elle-hughes-1660030.jpg')",
         "sm-background": "url('../imgs/pexels-elle-hughes-sm.jpg')",
+        "lg-background": "url('../imgs/pexels-elle-hughes-lg.jpg')",
       },
       backdropBlur: {
         xs: "1px",
