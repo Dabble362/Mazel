@@ -1534,6 +1534,10 @@ html {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-24 {
   height: 6rem;
 }
@@ -1647,8 +1651,8 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-hero-background {
-  background-image: url('../imgs/pexels-elle-hughes-1660030.jpg');
+.bg-sm-background {
+  background-image: url('../imgs/pexels-elle-hughes-sm.jpg');
 }
 
 .bg-cover {
@@ -1709,8 +1713,8 @@ html {
   line-height: 1;
 }
 
-.text-9xl {
-  font-size: 8rem;
+.text-8xl {
+  font-size: 6rem;
   line-height: 1;
 }
 
@@ -1721,6 +1725,10 @@ html {
 
 .font-bold {
   font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .text-caput-mortuum {
@@ -1752,6 +1760,12 @@ html {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.backdrop-blur-xs {
+  --tw-backdrop-blur: blur(1px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
 .file\:mr-4::file-selector-button {
@@ -1816,12 +1830,8 @@ html {
   }
 }
 
-@media (min-width: 1760) {
-  .xl\:flex {
-    display: flex;
-  }
-
-  .xl\:flex-1 {
-    flex: 1 1 0%;
+@media (min-width: 1024px) {
+  .lg\:bg-hero-background {
+    background-image: url('../imgs/pexels-elle-hughes-1660030.jpg');
   }
 }

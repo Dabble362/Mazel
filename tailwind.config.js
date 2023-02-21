@@ -23,6 +23,10 @@ module.exports = {
       },
       backgroundImage: {
         "hero-background": "url('../imgs/pexels-elle-hughes-1660030.jpg')",
+        "sm-background": "url('../imgs/pexels-elle-hughes-sm.jpg')",
+      },
+      backdropBlur: {
+        xs: "1px",
       },
     },
   },

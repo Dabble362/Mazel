@@ -1,17 +1,21 @@
 <%- include('partials/header') -%>
 
 <div class="flex">
-  <section class="flex-1"></section>
+  <section class="flex-1 hidden"></section>
   <section class="flex flex-1 justify-center items-center h-screen">
-    <div class="flex flex-col p-14 shadow-xl shadow-max-yel-green-500/50">
-      <h1 class="my-8 text-9xl font-bold text-dark-slate-gray">Mazel</h1>
-      <figcaption class="mb-2 text-dark-slate-gray">
+    <div
+      class="flex flex-col p-14 md:max-xl:shadow-xl shadow-max-yel-green-500/50"
+    >
+      <h1 class="my-8 text-8xl font-bold text-dark-slate-gray">Mazel</h1>
+      <figcaption
+        class="mb-2 text-dark-slate-gray text-lg font-semibold backdrop-blur-xs"
+      >
         A place to find, talk about, and save the recipes you love
       </figcaption>
       <form method="get" name="" action="#" class="flex items-end mb-5">
         <div class="form-control w-9/12 max-w-xs">
           <label class="label">
-            <span class="label-text text-dark-slate-gray"
+            <span class="label-text text-dark-slate-gray text-lg font-semibold"
               >What are you looking for?</span
             >
           </label>
