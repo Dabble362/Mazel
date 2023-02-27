@@ -16,7 +16,12 @@
       >
         A place to find, talk about, and save the recipes you love.
       </figcaption>
-      <form method="get" name="" action="#" class="flex items-end mb-5">
+      <form
+        method="POST"
+        name=""
+        action="/recipe/searchRecipes"
+        class="flex items-end mb-5"
+      >
         <div class="form-control w-9/12 max-w-xs">
           <label class="label">
             <span class="label-text text-dark-slate-gray text-lg font-semibold"
@@ -32,6 +37,7 @@
         <button
           class="text-key-lime btn rounded-r-lg w-5 bg-forest-green border-none hover:bg-yellow-400"
           type="submit"
+          id="searchButton"
         >
           GO
         </button>

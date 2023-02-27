@@ -84,16 +84,23 @@ module.exports = {
   },
   likeRecipe: async (req, res) => {
     try {
+      console.log("Likes +1");
       await Recipe.findOneAndUpdate(
         { _id: req.params.id },
         {
           $inc: { likes: 1 },
         }
       );
-      console.log("Likes +1");
       res.redirect(`/recipe/${req.params.id}`);
     } catch (err) {
       console.log(err);
+    }
+  },
+  searchRecipe: async (req, res) => {
+    try {
+      console.log("The search button is working");
+    } catch (err) {
+      res.redirect("/login");
     }
   },
   deleteRecipe: async (req, res) => {
