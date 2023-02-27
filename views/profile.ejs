@@ -1,99 +1,98 @@
 <%- include('partials/header') -%>
-<div class="flex flex-col w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
-  <div class="flex sm:flex-col justify-between items-center justify-between">
-    <p class="flex-2 my-8 text-7xl font-bold text-dark-slate-gray"><strong><em>Shalom</strong> <%= user.userName %>!</em></p>
-    <p class="flex-1 text-center"><%= user.email %></p>    
-  </div>
-  <!--form start-->
-  <form
-  method="GET"
-  name=""
-  action="/recipe/searchRecipes"
-  class="flex items-end mb-5"
->
-  <div class="form-control w-9/12 max-w-xs">
-    <label class="label">
-      <span class="label-text text-dark-slate-gray text-lg font-semibold"
-        >What are you looking for?</span
-      >
-    </label>
-    <input
-      type="text"
-      class="bg-white input input-bordered w-full max-w-xs"
-      id="searchBar"
-    />
-  </div>
-  <button
-    class="text-key-lime btn rounded-r-lg w-5 bg-forest-green border-none hover:bg-yellow-400"
-    type="submit"
-  >
-    GO
-  </button>
-</form>
-  <div class="flex justify-end">
+  <div class="flex flex-col w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
+    <div class="flex sm:flex-col justify-between items-center justify-between">
+      <p class="flex-2 my-8 text-7xl font-bold text-dark-slate-gray"><strong><em>Shalom</strong>
+        <%= user.userName %>!</em>
+      </p>
+      <p class="flex-1 text-center">
+        <%= user.email %>
+      </p>
+    </div>
+    <!--form start-->
+    <form method="POST" name="" action="/recipe/searchRecipes" class="flex items-end mb-5">
+      <div class="form-control w-9/12 max-w-xs">
+        <label class="label">
+          <span class="label-text text-dark-slate-gray text-lg font-semibold">What are you looking for?</span>
+        </label>
+        <input type="text" class="bg-white input input-bordered w-full max-w-xs" id="searchBar" />
+      </div>
+      <button class="text-key-lime btn rounded-r-lg w-5 bg-forest-green border-none hover:bg-yellow-400" type="submit">
+        GO
+      </button>
+    </form>
+    <div class="flex justify-end">
       <div class="py-2 px-2 my-2 bg-pale-spring-bud w-full mx-auto flex-3">
-          <h2 class="text-caput-mortuum font-bold text-2xl">Have a recipe to share?</h2>
-          <!-- Create Recipe-->
-            <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
-              <div class="form-control w-full max-w-xs">
-                <label for="name" class="label">
-                  <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
-                </label>
-                <input type="text" id="name" name="name" placeholder="recipe name" class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
-              </div>
-              <div class="form-control">
-                <label for="ingredients" class="label">
-                  <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
-                </label> 
-                <textarea id="ingredients" name="ingredients" class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700" placeholder="Ingredients"></textarea>
-              </div>
-              <div class="form-control">
-                <label for="directions" class="form-label">
-                  <span class="label-text text-lg font-bold text-dark-slate-gray">Directions</span>
-                </label>
-                <textarea class="textarea textarea-bordered h-24 bg-white" id="directions" name="directions"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label text-lg font-bold text-dark-slate-gray">Image</label>
-                <input type="file" id="imageUpload" name="file" class="form-control
+        <h2 class="text-caput-mortuum font-bold text-2xl">Have a recipe to share?</h2>
+        <!-- Create Recipe-->
+        <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
+          <div class="form-control w-full max-w-xs">
+            <label for="name" class="label">
+              <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
+            </label>
+            <input type="text" id="name" name="name" placeholder="recipe name"
+              class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
+          </div>
+          <div class="form-control">
+            <label for="ingredients" class="label">
+              <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
+            </label>
+            <textarea id="ingredients" name="ingredients"
+              class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700"
+              placeholder="Ingredients"></textarea>
+          </div>
+          <div class="form-control">
+            <label for="directions" class="form-label">
+              <span class="label-text text-lg font-bold text-dark-slate-gray">Directions</span>
+            </label>
+            <textarea class="textarea textarea-bordered h-24 bg-white" id="directions" name="directions"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="imgUpload" class="form-label text-lg font-bold text-dark-slate-gray">Image</label>
+            <input type="file" id="imageUpload" name="file" class="form-control
                 file:mr-4 
                 file:py-2 
                 file:px-4
                 file:rounded-full file:border-0
                 file:text-sm file:font-bold
                 file:bg-violet-50 file:text-forest-green
-                hover:file:bg-success-green hover:file:text-dark-slate-gray" >
-              </div>
-              <button type="submit" class="btn btn-outline btn-success" value="Upload">Add A Recipe</button>
-            </form>
-        </div>
-          <div class="flex flex-col flex-1 items-center justify-between">
-            <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a>
-            <a href="/favorites" class=" flex-1 btn btn-outline btn-success">Go to Favorites</a>
-            <a class="btn btn-outline btn-success flex-1" href="/feed">Return to Feed</a>
+                hover:file:bg-success-green hover:file:text-dark-slate-gray">
           </div>
-  </div>
-  <!--form end-->
-</div>
-<div class="flex flex-row justify-between">
-  <div class="flex flex-col w-5/6 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
-    <div class="flex">
-      <h2 class="my-4 text-4xl font-bold text-dark-slate-gray border-b-4 border-forest-green">My Recipes</h2>
+          <button type="submit" class="btn btn-outline btn-success" value="Upload">Add A Recipe</button>
+        </form>
+      </div>
+      <div class="flex flex-col flex-1 items-center justify-between">
+        <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a>
+        <a href="/favorites" class=" flex-1 btn btn-outline btn-success">Go to Favorites</a>
+        <a class="btn btn-outline btn-success flex-1" href="/feed">Return to Feed</a>
+      </div>
     </div>
-    <ul class="flex flex-wrap flex-row">
-    <% for(var i=0; i<recipes.length; i++) {%>
-      <li class="justify-between p-4 flex-1 card bg-pale-spring-bud shadow-xl">
-        <div class="card-body">
-        <a href="/recipe/<%= recipes[i]._id%>">
-          <h2 class="text-caput-mortuum font-bold text-2xl card-title"><%= recipes[i].name %> </h2>
-          <figure><img class="inline" src="<%= recipes[i].image%>"></figure>
-          <p class="text-dark-slate-gray text-2xl"><%= recipes[i].ingredients %> </p>
-          <p class="text-dark-slate-gray text-2xl" ><%= recipes[i].directions %></p>
-        </a>
-        </div>
-      </li>
-     <% } %>
-    </ul>
-  </div>  
-</div>
-<%- include('partials/footer') -%>
+    <!--form end-->
+  </div>
+  <div class="flex flex-row justify-between">
+    <div class="flex flex-col w-5/6 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
+      <div class="flex">
+        <h2 class="my-4 text-4xl font-bold text-dark-slate-gray border-b-4 border-forest-green">My Recipes</h2>
+      </div>
+      <ul class="flex flex-wrap flex-row">
+        <% for(var i=0; i<recipes.length; i++) {%>
+          <li class="justify-between p-4 flex-1 card bg-pale-spring-bud shadow-xl">
+            <div class="card-body">
+              <a href="/recipe/<%= recipes[i]._id%>">
+                <h2 class="text-caput-mortuum font-bold text-2xl card-title">
+                  <%= recipes[i].name %>
+                </h2>
+                <figure><img class="inline" src="<%= recipes[i].image%>"></figure>
+                <p class="text-dark-slate-gray text-2xl">
+                  <%= recipes[i].ingredients %>
+                </p>
+                <p class="text-dark-slate-gray text-2xl">
+                  <%= recipes[i].directions %>
+                </p>
+              </a>
+            </div>
+          </li>
+          <% } %>
+      </ul>
+    </div>
+  </div>
+  <%- include('partials/footer') -%>

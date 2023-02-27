@@ -1,20 +1,21 @@
 function animatePlaceholder() {
   const searchBar = document.getElementById("searchBar");
-  let index = 0;
 
-  const sentence = "What are you looking for?";
+  if (searchBar) {
+    let index = 0;
+    const sentence = "What are you looking for?";
+    const time = 110;
 
-  const time = 110;
+    const interval = setInterval(() => {
+      searchBar.placeholder = sentence.substring(0, index);
 
-  const interval = setInterval(() => {
-    searchBar.placeholder = sentence.substring(0, index);
+      index++;
+    }, time);
 
-    index++;
-  }, time);
-
-  setTimeout(() => {
-    clearInterval(interval);
-  }, time * (sentence.length + 1));
+    setTimeout(() => {
+      clearInterval(interval);
+    }, time * (sentence.length + 1));
+  }
 }
 
 window.addEventListener("DOMContentLoaded", animatePlaceholder);

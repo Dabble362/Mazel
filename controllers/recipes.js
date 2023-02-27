@@ -5,6 +5,7 @@ const Comment = require("../models/Comments");
 
 module.exports = {
   getProfile: async (req, res) => {
+    console.log("getProfile was invoked");
     try {
       //since we have a session each request contains the logged in user's
       //info: req.user
@@ -27,7 +28,10 @@ module.exports = {
   },
   getRecipe: async (req, res) => {
     try {
+      console.log("getRecipe was invoked");
+      console.log(req.params);
       const comment = await Comment.find({ postId: req.params.id });
+      console.log("comment: ", comment);
       const recipe = await Recipe.findById(req.params.id);
       res.render("recipe.ejs", {
         recipe: recipe,
@@ -97,15 +101,15 @@ module.exports = {
     }
   },
   searchRecipe: async (req, res) => {
+    console.log("🔎 The search button is working.");
     try {
-      console.log("The search button is working");
-      const { search } = "test";
-      let recipes = await Recipe.aggregate([
+      const userEnteredSearchTerm = "test"; // Hardcoded for now
+      const searchParams = [
         {
           $search: {
             index: "recipes",
             text: {
-              query: search,
+              query: userEnteredSearchTerm,
               path: ["name", "directions", "ingredients"],
             },
           },
@@ -120,9 +124,16 @@ module.exports = {
             user: 1,
           },
         },
-      ]);
-      console.log(recipes);
+      ];
+      const searchResults = await Recipe.aggregate(searchParams);
+      console.log("✅ You have succesfully performed a search (i.e. calling Recipe.aggregate did not blow up).");
+      console.log("📜 Your search parameters were:");
+      console.log(JSON.stringify(searchParams, null, 2)); // From https://stackoverflow.com/a/10729391
+      console.log("🎁 ...and your search results are:");
+      console.log(searchResults);
     } catch (err) {
+      console.log("Error encounted while searching for recipes");
+      console.log(err);
       res.redirect("/login");
     }
   },

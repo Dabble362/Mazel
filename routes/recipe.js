@@ -13,7 +13,7 @@ router.post(
   recipesController.createRecipe
 );
 
-router.get("/searchRecipes", ensureAuth, recipesController.searchRecipe);
+router.post("/searchRecipes", recipesController.searchRecipe);
 
 router.put("/likeRecipe/:id", recipesController.likeRecipe);
 
