@@ -99,6 +99,29 @@ module.exports = {
   searchRecipe: async (req, res) => {
     try {
       console.log("The search button is working");
+      const { search } = "test";
+      let recipes = await Recipe.aggregate([
+        {
+          $search: {
+            index: "recipes",
+            text: {
+              query: search,
+              path: ["name", "directions", "ingredients"],
+            },
+          },
+        },
+        {
+          $limit: 5,
+        },
+        {
+          $project: {
+            name: 1,
+            image: 1,
+            user: 1,
+          },
+        },
+      ]);
+      console.log(recipes);
     } catch (err) {
       res.redirect("/login");
     }
