@@ -126,13 +126,15 @@ module.exports = {
         },
       ];
       const searchResults = await Recipe.aggregate(searchParams);
-      console.log("✅ You have succesfully performed a search (i.e. calling Recipe.aggregate did not blow up).");
+      console.log(
+        "✅ You have successfully performed a search (i.e. calling Recipe.aggregate did not blow up)."
+      );
       console.log("📜 Your search parameters were:");
       console.log(JSON.stringify(searchParams, null, 2)); // From https://stackoverflow.com/a/10729391
       console.log("🎁 ...and your search results are:");
       console.log(searchResults);
     } catch (err) {
-      console.log("Error encounted while searching for recipes");
+      console.log("Error encountered while searching for recipes");
       console.log(err);
       res.redirect("/login");
     }

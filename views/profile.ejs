@@ -1,13 +1,33 @@
 <%- include('partials/header') -%>
+<!-- //Navigation/Welcome START>>>>>>>>>> -->
   <div class="flex flex-col w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
-    <div class="flex sm:flex-col justify-between items-center justify-between">
-      <p class="flex-2 my-8 text-7xl font-bold text-dark-slate-gray"><strong><em>Shalom</strong>
-        <%= user.userName %>!</em>
-      </p>
-      <p class="flex-1 text-center">
-        <%= user.email %>
-      </p>
-    </div>
+    <div class="flex justify-between items-center justify-between">
+      <!--||Dropdown START>>>>>>>>>> -->
+      <div class="dropdown">
+        <label tabindex="0" class="btn m-1">Click</label>
+        <ul tabindex="0" class="flex flex-col flex-1 items-center justify-between dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+          <li> <a href="/favorites" class=" flex-1 btn btn-outline btn-success">Go to Favorites</a></li>
+          <li> <a class="btn btn-outline btn-success flex-1" href="/feed">Return to Feed</a></li>
+          <li> <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a></li>
+          <li> 
+            <!-- ||Modal Create Recipe START >>>>>>> -->
+            <!-- <<<<<<< END Modal Create Recipe ||  -->
+            <label for="my-modal-6" class="btn">open modal</label>
+
+<!-- Put this part before </body> tag -->
+<!-- <<<<<<< END Modal Create Recipe ||  -->
+</li>
+</ul>
+</div>
+<!-- <<<<<<<<<<< END Dropdown ||-->
+<p class="flex-2 my-8 text-base font-bold text-dark-slate-gray"><strong><em>Shalom</strong>
+  <%= user.userName %>!</em>
+</p>
+<!-- <p class="flex-1 text-center">
+  <%= user.email %>
+</p> -->
+</div>
+<!-- <<<<<<<<<END Navigation/Welcome -->
     <!--form start-->
     <form method="POST" name="" action="/recipe/searchRecipes" class="flex items-end mb-5">
       <div class="form-control w-9/12 max-w-xs">
@@ -30,15 +50,15 @@
               <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
             </label>
             <input type="text" id="name" name="name" placeholder="recipe name"
-              class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
+            class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
           </div>
           <div class="form-control">
             <label for="ingredients" class="label">
               <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
             </label>
             <textarea id="ingredients" name="ingredients"
-              class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700"
-              placeholder="Ingredients"></textarea>
+            class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700"
+            placeholder="Ingredients"></textarea>
           </div>
           <div class="form-control">
             <label for="directions" class="form-label">
@@ -49,22 +69,18 @@
           <div class="mb-3">
             <label for="imgUpload" class="form-label text-lg font-bold text-dark-slate-gray">Image</label>
             <input type="file" id="imageUpload" name="file" class="form-control
-                file:mr-4 
-                file:py-2 
-                file:px-4
-                file:rounded-full file:border-0
-                file:text-sm file:font-bold
-                file:bg-violet-50 file:text-forest-green
-                hover:file:bg-success-green hover:file:text-dark-slate-gray">
+            file:mr-4 
+            file:py-2 
+            file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-bold
+            file:bg-violet-50 file:text-forest-green
+            hover:file:bg-success-green hover:file:text-dark-slate-gray">
           </div>
           <button type="submit" class="btn btn-outline btn-success" value="Upload">Add A Recipe</button>
         </form>
       </div>
-      <div class="flex flex-col flex-1 items-center justify-between">
-        <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a>
-        <a href="/favorites" class=" flex-1 btn btn-outline btn-success">Go to Favorites</a>
-        <a class="btn btn-outline btn-success flex-1" href="/feed">Return to Feed</a>
-      </div>
+      
     </div>
     <!--form end-->
   </div>
@@ -92,7 +108,17 @@
             </div>
           </li>
           <% } %>
-      </ul>
+        </ul>
+    </div>
+  </div>
+  <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+  <div class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+      <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+      <div class="modal-action">
+        <label for="my-modal-6" class="btn">Yay!</label>
+      </div>
     </div>
   </div>
   <%- include('partials/footer') -%>
