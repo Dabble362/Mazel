@@ -39,7 +39,29 @@
       <div class="flex">
         <h2 class="my-4 text-4xl font-bold text-dark-slate-gray border-b-4 border-forest-green">My Recipes</h2>
       </div>
-      <ul class="flex flex-wrap flex-row">
+
+      <ul class="grid gap-4 grid-cols-3 grid-rows-3">
+        <% for(var i=0; i<recipes.length; i++) {%>
+          <li>
+            <div class="card lg:card-side bg-base-100 shadow-xl">
+              <figure class="flex-1">
+                <img class="w-auto h-[200px]" src="<%= recipes[i].image%>" alt="#"/>
+              </figure>
+              <div class="card-body">
+                <a href="/recipe/<%= recipes[i]._id%>">
+                  <h2 class="card-title"><%= recipes[i].name %></h2>
+                  <p>The description will go here</p>
+                  <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Listen</button>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+        <% } %>
+      </ul>
+
+      <!-- <ul class="flex flex-wrap flex-row">
         <% for(var i=0; i<recipes.length; i++) {%>
           <li class="justify-between p-4 flex-1 card bg-pale-spring-bud shadow-xl">
             <div class="card-body">
@@ -58,7 +80,7 @@
             </div>
           </li>
           <% } %>
-        </ul>
+        </ul> -->
       </div>
   </div>
   <!-- Put this part before </body> tag MODAL CREATE RECIPE CONTENT-->
