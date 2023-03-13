@@ -1,25 +1,117 @@
 <%- include('partials/header') -%>
-<div class="flex flex-col w-5/6  mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
-  <div class="flex justify-between items-center justify-between">
-    <p class="flex-2 my-8 text-7xl font-bold text-dark-slate-gray"><strong><em><%= user.userName %>'s</strong></em> feed</p>
-    <p class="flex-1 text-center"><%= user.email %></p>    
+<div class="flex flex-col bg-white/50 w-5/6 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
+  <div class="navbar mt-7 flex-wrap md:flex-nowrap bg-gradient-to-r from-base-100">
+    <div class="md:navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-[#073D00]" fill="forest-green" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+      </label>
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li> 
+          <!-- ||Modal Create Recipe START >>>>>>> -->
+          <!-- <<<<<<< END Modal Create Recipe ||  -->
+          <label for="my-modal-6" class="btn btn-outline btn-success">Create Recipe</label>
+          
+          <!-- <<<<<<< END Modal Create Recipe ||  -->
+        </li>
+        <li> <a href="/profile" class=" flex-1 btn btn-outline btn-success">Return to Profile</a></li>
+        <li> <a class="btn btn-outline btn-success flex-1" href="/feed">Return to Feed</a></li>
+        <li> <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a></li>
+      </ul>
   </div>
-  <div class="flex flex-row flex-1 items-center justify-between">
-    <a href="/profile" class=" flex-1 btn btn-outline btn-success">Return to Profile</a>
-    <a class="btn btn-outline btn-success flex-1" href="/feed">Go to feed</a>
-    <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a>
+</div>
+  <div class="navbar-center">
+    <a class="btn btn-ghost normal-case text-xl"><p class="font-bold text-dark-slate-gray"><strong><em>Shalom</strong>
+      <%= user.userName %>!</em>
+    </p></a>
   </div>
-    <ul class="row list-unstyled">
-    <% for(var i=0; i<recipes.length; i++) {%>
-      <li class="justify-between p-4 flex-1 card bg-pale-spring-bud shadow-xl">
-        <a href="/recipe/<%= recipes[i].recipe._id%>">
-          <h2 class="text-caput-mortuum font-bold text-2xl"><%= recipes[i].recipe.name %> </h2>
-          <img class="inline" src="<%= recipes[i].recipe.image%>">
-          <p class="text-dark-slate-gray text-2xl"><%= recipes[i].recipe.ingredients %> </p>
-          <p class="text-dark-slate-gray text-2xl"><%= recipes[i].recipe.directions %></p>
-        </a>
-      </li>
-    <% } %>
-    </ul>
+  <div class=" md:navbar-end">
+    <form method="POST" name="" action="/recipe/searchRecipes">
+      <div class="form-control w-[250px]">
+        <input type="text" id="searchBar" class="input input-bordered" />
+      </div>
+    </form>
+  </div>
+  </div>
+</div>
+<!--NAVBAR END-->
+<div class="flex flex-row justify-between ">
+  <div class="flex flex-col w-5/6  bg-white/50 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
+    <div class="flex">
+      <h2 class="my-4 pb-2 text-4xl w-full font-bold text-dark-slate-gray bg-gradient-to-r from-base-100 border-b-4 border-forest-green">My Favorites</h2>
+    </div>
+    <ul class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <% for(var i=0; i<recipes.length; i++) {%>
+        <li>
+          <div class="max-h-[450px] card h-max-[475px] bg-base-100 shadow-xl">
+            <figure class="flex-1 overflow-hidden">
+              <img class="object-center object-cover" src="<%= recipes[i].recipe.image%>" alt="#"/>
+            </figure>
+            <div class="card-body">
+              <a href="/recipe/<%= recipes[i].recipe._id%>">
+                <h2 class="card-title text-dark-slate-gray"><%= recipes[i].recipe.name %></h2>
+                <p class="max-h-20 text-dark-slate-gray text-ellipsis overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie dapibus augue quis rutrum. Ut nibh urna, suscipit quis elementum vel, rhoncus ut nibh. Nam non nisl nec dolor pretium consectetur eget ac quam. Sed in tortor at purus mollis posuere id nec nunc. Vivamus consequat massa nulla. Ut consectetur eros ex, eu porttitor massa bibendum volutpat. Nulla vitae efficitur ipsum. Morbi lobortis pulvinar arcu at dapibus. Aliquam at enim lobortis, fermentum sapien a, rutrum augue.</p>
+                <div class="card-actions justify-end">
+                  <button class="btn btn-outline btn-success">Go</button>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+</div>
+<!--MODAL MENU-->
+<input type="checkbox" id="my-modal-6" class="modal-toggle" />
+<div class="modal modal-bottom sm:modal-middle bg-pale-spring-bud">
+  <div class="modal-box">
+    <!--form start-->
+    <div class="flex justify-end">
+    <div class="py-2 px-2 my-2 bg-pale-spring-bud w-full mx-auto flex-3">
+      <h2 class="text-caput-mortuum font-bold text-2xl">Have a recipe to share?</h2>
+      <!-- Create Recipe-->
+      <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
+      <div class="form-control w-full max-w-xs">
+        <label for="name" class="label">
+          <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
+          </label>
+          <input type="text" id="name" name="name" placeholder="recipe name"
+          class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
+        </div>
+        <div class="form-control">
+          <label for="ingredients" class="label">
+            <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
+          </label>
+          <textarea id="ingredients" name="ingredients"
+          class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700"
+          placeholder="Ingredients"></textarea>
+        </div>
+        <div class="form-control">
+          <label for="directions" class="form-label">
+            <span class="label-text text-lg font-bold text-dark-slate-gray">Directions</span>
+          </label>
+          <textarea class="textarea textarea-bordered h-24 bg-white" id="directions" name="directions"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="imgUpload" class="form-label text-lg font-bold text-dark-slate-gray">Image</label>
+          <input type="file" id="imageUpload" name="file" class="form-control
+          file:mr-4 
+          file:py-2 
+          file:px-4
+          file:rounded-full file:border-0
+          file:text-sm file:font-bold
+          file:bg-violet-50 file:text-forest-green
+          hover:file:bg-success-green hover:file:text-dark-slate-gray">
+        </div>
+        <button type="submit" class="btn btn-outline btn-success" value="Upload">Add A Recipe</button>
+      </form>
+    </div>
+    </div>
+    <!--form end-->
+    <div class="modal-action bg-pale-spring-bud">
+    <label for="my-modal-6" class="btn btn-outline btn-success">Close</label>
+    </div>
+  </div>
 </div>
 <%- include('partials/footer') -%>
