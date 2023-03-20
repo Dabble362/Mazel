@@ -22,8 +22,6 @@ export function Hero(props) {
     }
   }
 
-  //   window.addEventListener("DOMContentLoaded", animatePlaceholder);
-
   useEffect(() => {
     animatePlaceholder();
   }, []);
