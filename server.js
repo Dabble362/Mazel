@@ -64,11 +64,16 @@ app.use("/", mainRoutes);
 app.use("/recipe", recipeRoutes);
 app.use("/comment", commentRoutes);
 
+// Testing simple suggestion to demonstrate that Express
+// can serve data to React
+app.get("/api/data", (req, res) => {
+    res.json({ message: "Hello from Express server!" });
+  });
+
 // Testing React routes for uncaught routes
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
   });
-
 
 //Server Running
 app.listen(process.env.PORT, () => {
