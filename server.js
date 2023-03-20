@@ -12,6 +12,8 @@ const mainRoutes = require("./routes/main");
 const recipeRoutes = require("./routes/recipe");
 const commentRoutes = require("./routes/comment");
 
+const path = require("path");
+
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
@@ -26,6 +28,9 @@ app.set("view engine", "ejs");
 
 //Static Folder
 app.use(express.static("public"));
+
+// Testing React stuff
+app.use(express.static(path.join(__dirname, "client/build")));
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
@@ -58,6 +63,12 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/recipe", recipeRoutes);
 app.use("/comment", commentRoutes);
+
+// Testing React routes for uncaught routes
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
+  });
+
 
 //Server Running
 app.listen(process.env.PORT, () => {
