@@ -72,21 +72,39 @@
         <h2 class="text-caput-mortuum font-bold text-2xl">Have a recipe to share?</h2>
         <!-- Create Recipe-->
         <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
-        <div class="form-control w-full max-w-xs">
-          <label for="name" class="label">
-            <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
+          <!--Recipe Name-->
+          <div class="form-control w-full max-w-xs">
+            <label for="name" class="label">
+              <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe Name</span>
             </label>
             <input type="text" id="name" name="name" placeholder="recipe name"
             class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
           </div>
+          <!--Recipe Description-->
+          <div class="form-control w-full max-w-xs">
+            <label for="name" class="label">
+              <span class="label-text text-lg font-bold text-dark-slate-gray">Description</span>
+            </label>
+            <input type="text" id="description" name="description" placeholder="Give an overview of the recipe"
+            class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
+          </div>
+
+          <!--Recipe Ingredients-->
           <div class="form-control">
             <label for="ingredients" class="label">
               <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
             </label>
-            <textarea id="ingredients" name="ingredients"
-            class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700"
-            placeholder="Ingredients"></textarea>
+            <p>Enter one ingredient per line. Include the quantity (i.e. cups, tablespoons) and any special preparation (i.e. sifted, softened, chopped). Use optional headers to organize the different parts of the recipe (i.e. Cake, Frosting, Dressing).</p>
+            <div class="flex">
+              <textarea id="ingredients" name="ingredients"
+                class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700"
+                placeholder="Ingredients">
+              </textarea>
+              <button type="button" class="btn btn-outline btn-success" value="remove">#</button>
+            </div>
+            <button type="button" class="btn btn-outline btn-success" id="addIngredient"></button>
           </div>
+
           <div class="form-control">
             <label for="directions" class="form-label">
               <span class="label-text text-lg font-bold text-dark-slate-gray">Directions</span>
