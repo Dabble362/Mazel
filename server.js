@@ -64,10 +64,10 @@ app.use("/", mainRoutes);
 app.use("/recipe", recipeRoutes);
 app.use("/comment", commentRoutes);
 
-// Testing simple suggestion to demonstrate that Express
-// can serve data to React
-app.get("/api/data", (req, res) => {
-    res.json({ message: "Hello from Express server!" });
+// Endpoint to test connection to server for development
+const connectionTestingEndpoint = "/api/testServerConnection";
+app.get(connectionTestingEndpoint, (req, res) => {
+    res.json({ message: `I am a message from the server at route: ${connectionTestingEndpoint}` });
   });
 
 // Testing React routes for uncaught routes
