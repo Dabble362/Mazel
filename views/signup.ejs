@@ -1,75 +1,84 @@
 <%- include('partials/header') -%>
 
-<section class="flex flex-row items-center justify-center w-screen h-screen">
-  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-  <div class="alert alert-danger"><%= el.msg %></div>
-  <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
-  el => { %>
-  <div class="alert alert-info"><%= el.msg %></div>
-  <% }) %> <% } %>
-  <form
-    action="/signup"
-    method="POST"
-    class="flex flex-col justify-center items-center mx-auto my-auto p-16 shadow-xl shadow-max-yel-green-500/50"
+<div class="flex">
+  <section class="xl:flex-1 sm:max-lg:hidden"></section>
+  <section
+    class="flex flex-1 flex-row items-center justify-center w-screen h-screen"
   >
-    <div class="mb-3">
-      <label for="userName" class="label">
-        <span class="label-text text-lg font-bold text-dark-slate-gray"
-          >User Name</span
-        >
-      </label>
-      <input
-        type="text"
-        class="bg-white input input-bordered w-full width-w-max"
-        id="userName"
-        name="userName"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="label">
-        <span class="label-text text-lg font-bold text-dark-slate-gray"
-          >Email address</span
-        >
-      </label>
-      <input
-        type="email"
-        class="bg-white input input-bordered w-full width-w-max"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        name="email"
-      />
-      <div id="emailHelp" class="form-text text-dark-slate-gray">
-        We'll never share your email with anyone else.
+    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+    <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
+    el => { %>
+    <div class="alert alert-info"><%= el.msg %></div>
+    <% }) %> <% } %>
+    <form
+      action="/signup"
+      method="POST"
+      class="flex flex-col bg-gradient-to-r from-base-100/75 justify-center items-center mx-auto my-auto p-16 md:max-xl:shadow-xl shadow-max-yel-green-500/50"
+    >
+      <div class="mb-3">
+        <label for="userName" class="label">
+          <span
+            class="label-text text-lg font-semibold text-dark-slate-gray xs:max-xl:backdrop-blur-sm md:max-xl:bg-white/30"
+            >User Name</span
+          >
+        </label>
+        <input
+          type="text"
+          class="bg-white input text-slate-600 input-bordered w-full width-w-max"
+          id="userName"
+          name="userName"
+        />
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="password" class="label">
-        <span class="label-text text-lg font-bold text-dark-slate-gray"
-          >Password</span
-        >
-      </label>
-      <input
-        type="password"
-        class="bg-white input input-bordered w-full width-w-max"
-        id="password"
-        name="password"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="confirmPassword" class="label">
-        <span class="label-text text-lg font-bold text-dark-slate-gray"
-          >Confirm Password</span
-        >
-      </label>
-      <input
-        type="password"
-        class="bg-white input input-bordered w-full width-w-max"
-        id="confirmPassword"
-        name="confirmPassword"
-      />
-    </div>
-    <button type="submit" class="btn btn-outline btn-success">Submit</button>
-  </form>
-</section>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="label">
+          <span
+            class="label-text text-lg font-semibold text-dark-slate-gray md:max-xl:backdrop-blur-sm md:max-xl:bg-white/30"
+            >Email address</span
+          >
+        </label>
+        <input
+          type="email"
+          class="bg-white input text-slate-600 input-bordered w-full width-w-max"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          name="email"
+        />
+        <div id="emailHelp" class="form-text text-dark-slate-gray">
+          We will never share your email with anyone else.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="label">
+          <span
+            class="label-text text-lg font-semibold text-dark-slate-gray md:max-xl:backdrop-blur-sm md:max-xl:bg-white/30"
+            >Password</span
+          >
+        </label>
+        <input
+          type="password"
+          class="bg-white input text-slate-600 input-bordered w-full width-w-max"
+          id="password"
+          name="password"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="confirmPassword" class="label">
+          <span
+            class="label-text text-lg font-semibold text-dark-slate-gray md:max-xl:backdrop-blur-sm md:max-xl:bg-white/30"
+            >Confirm Password</span
+          >
+        </label>
+        <input
+          type="password"
+          class="bg-white input text-slate-600 input-bordered w-full width-w-max"
+          id="confirmPassword"
+          name="confirmPassword"
+        />
+      </div>
+      <button type="submit" class="btn btn-outline btn-success">Submit</button>
+    </form>
+  </section>
+</div>
 
 <%- include('partials/footer') -%>

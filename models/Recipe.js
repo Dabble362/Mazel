@@ -17,6 +17,10 @@ const RecipeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: false,
+  },
   likes: {
     type: Number,
     required: true,

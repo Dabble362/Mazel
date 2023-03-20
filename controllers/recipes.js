@@ -5,6 +5,7 @@ const Comment = require("../models/Comments");
 
 module.exports = {
   getProfile: async (req, res) => {
+    console.log("getProfile was invoked");
     try {
       //since we have a session each request contains the logged in user's
       //info: req.user
@@ -27,7 +28,10 @@ module.exports = {
   },
   getRecipe: async (req, res) => {
     try {
+      console.log("getRecipe was invoked");
+      console.log(req.params);
       const comment = await Comment.find({ postId: req.params.id });
+      console.log("comment: ", comment);
       const recipe = await Recipe.findById(req.params.id);
       res.render("recipe.ejs", {
         recipe: recipe,
@@ -84,16 +88,55 @@ module.exports = {
   },
   likeRecipe: async (req, res) => {
     try {
+      console.log("Likes +1");
       await Recipe.findOneAndUpdate(
         { _id: req.params.id },
         {
           $inc: { likes: 1 },
         }
       );
-      console.log("Likes +1");
       res.redirect(`/recipe/${req.params.id}`);
     } catch (err) {
       console.log(err);
+    }
+  },
+  searchRecipe: async (req, res) => {
+    console.log("🔎 The search button is working.");
+    try {
+      const userEnteredSearchTerm = "test"; // Hardcoded for now
+      const searchParams = [
+        {
+          $search: {
+            index: "recipes",
+            text: {
+              query: userEnteredSearchTerm,
+              path: ["name", "directions", "ingredients"],
+            },
+          },
+        },
+        {
+          $limit: 5,
+        },
+        {
+          $project: {
+            name: 1,
+            image: 1,
+            user: 1,
+          },
+        },
+      ];
+      const searchResults = await Recipe.aggregate(searchParams);
+      console.log(
+        "✅ You have successfully performed a search (i.e. calling Recipe.aggregate did not blow up)."
+      );
+      console.log("📜 Your search parameters were:");
+      console.log(JSON.stringify(searchParams, null, 2)); // From https://stackoverflow.com/a/10729391
+      console.log("🎁 ...and your search results are:");
+      console.log(searchResults);
+    } catch (err) {
+      console.log("Error encountered while searching for recipes");
+      console.log(err);
+      res.redirect("/login");
     }
   },
   deleteRecipe: async (req, res) => {

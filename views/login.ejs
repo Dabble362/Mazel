@@ -1,42 +1,57 @@
 <%- include('partials/header') -%>
 
-<section class="flex flex-row items-center justify-center w-screen h-screen">
-  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-  <div class="alert alert-danger"><%= el.msg %></div>
-  <% }) %> <% } %> <% if (locals.messages.info) { %> <%messages.info.forEach(
-  el=> { %>
-  <div class="alert alert-info"><%= el.msg %></div>
-  <% }) %> <% } %>
-  <form
-    action="/login"
-    method="POST"
-    class="flex flex-col justify-center items-center mx-auto my-auto p-16 shadow-xl shadow-max-yel-green-500/50"
+<div class="flex">
+  <section class="xl:flex-1 sm:max-lg:hidden"></section>
+  <section
+    class="flex flex-1 flex-row items-center justify-center w-screen h-screen"
   >
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="label">
-        <span class="label-text text-dark-slate-gray">Email address</span>
-      </label>
-      <input
-        type="email"
-        class="bg-white input input-bordered w-full max-w-xs"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        name="email"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="label">
-        <span class="label-text text-dark-slate-gray">Password</span>
-      </label>
-      <input
-        type="password"
-        class="bg-white input input-bordered w-full max-w-xs"
-        id="exampleInputPassword1"
-        name="password"
-      />
-    </div>
-    <button type="submit" class="btn btn-outline btn-success">Submit</button>
-  </form>
-</section>
+    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+    <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %> <% } %> <% if (locals.messages.info) { %> <%messages.info.forEach(
+    el=> { %>
+    <div class="alert alert-info"><%= el.msg %></div>
+    <% }) %> <% } %>
+    <form
+      action="/login"
+      method="POST"
+      class="flex flex-col bg-gradient-to-r from-base-100/75 justify-center items-center mx-auto my-auto p-16 md:max-xl:shadow-xl shadow-max-yel-green-500/50"
+    >
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="label">
+          <span
+            class="label-text text-dark-slate-gray text-lg font-semibold md:max-xl:backdrop-blur-sm md:max-xl:bg-white/30"
+            >Email address</span
+          >
+        </label>
+        <input
+          type="email"
+          class="bg-white input input-bordered w-full max-w-xs"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          name="email"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="label">
+          <span class="label-text text-dark-slate-gray text-lg font-semibold"
+            >Password</span
+          >
+        </label>
+        <input
+          type="password"
+          class="bg-white input input-bordered w-full max-w-xs"
+          id="exampleInputPassword1"
+          name="password"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]"
+      >
+        Submit
+      </button>
+    </form>
+  </section>
+</div>
 
 <%- include('partials/footer') -%>
