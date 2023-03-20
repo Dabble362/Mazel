@@ -23,9 +23,9 @@ module.exports = {
         "max-yel-green": "#DEEf57",
       },
       backgroundImage: {
-        "xl-background": "url('../imgs/pexels-elle-hughes-1660030.jpg')",
-        "sm-background": "url('../imgs/pexels-elle-hughes-sm.jpg')",
-        "lg-background": "url('../imgs/pexels-elle-hughes-lg.jpg')",
+        "xl-background": "url('./assets/pexels-elle-hughes-1660030.jpg')",
+        "sm-background": "url('./assets/pexels-elle-hughes-sm.jpg')",
+        "lg-background": "url('./assets/pexels-elle-hughes-lg.jpg')",
       },
       backdropBlur: {
         xs: "1px",
