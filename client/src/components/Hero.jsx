@@ -1,5 +1,6 @@
-import FetchData from "../FetchData";
 import { useEffect } from "react";
+
+import TestEndpoint from "../TestEndpoint";
 
 export function Hero(props) {
   function animatePlaceholder() {
@@ -29,7 +30,12 @@ export function Hero(props) {
   return (
     <section className="flex flex-1 justify-center items-center h-screen">
       <div className="bg-gradient-to-r from-base-100/75 flex flex-col p-14 md:max-xl:shadow-xl shadow-max-yel-green-500/50">
-        <FetchData />
+        <TestEndpoint
+          endpoint="/api/testServerConnection"
+        />
+        <TestEndpoint
+          endpoint="/api/randomNumberGenerator"
+        />
         <h1 className="my-8 text-8xl font-bold text-dark-slate-gray lg:backdrop-blur-xs">
           Mazel
         </h1>

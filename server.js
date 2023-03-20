@@ -67,13 +67,23 @@ app.use("/comment", commentRoutes);
 // Endpoint to test connection to server for development
 const connectionTestingEndpoint = "/api/testServerConnection";
 app.get(connectionTestingEndpoint, (req, res) => {
-    res.json({ message: `I am a message from the server at route: ${connectionTestingEndpoint}` });
+  res.json({ message: `I am a message from the server at route: ${connectionTestingEndpoint}` });
+});
+
+// A secondary testing endpoint to demonstrate returning different data
+const randomNumberGeneratorEndpoint = "/api/randomNumberGenerator";
+app.get(randomNumberGeneratorEndpoint, (req, res) => {
+  const randomNumber = Math.floor(Math.random() * 100);
+  res.json({
+    message: `I am a random number generator at ${randomNumberGeneratorEndpoint}. Your random number is ${randomNumber}.`
   });
+});
+
 
 // Testing React routes for uncaught routes
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
-  });
+  res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
+});
 
 //Server Running
 app.listen(process.env.PORT, () => {
