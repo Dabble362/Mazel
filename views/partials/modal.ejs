@@ -30,15 +30,8 @@
                   placeholder="recipe name"
                   class="input input-bordered w-full max-w-xs bg-white text-dark-slate-gray"
                 />
-                <button
-                  type="button"
-                  class="btn btn-outline btn-success"
-                  id="add-ingredient-btn"
-                >
-                  + ingredient
-                </button>
               </div>
-              <div class="form-control">
+              <div id="recipe-form" class="form-control">
                 <label for="ingredients" class="label">
                   <span
                     class="label-text text-lg font-bold text-dark-slate-gray"
@@ -48,9 +41,16 @@
                 <textarea
                   id="ingredients"
                   name="ingredients"
-                  class="textarea textarea-bordered h-24 bg-white text-dark-slate-gray"
+                  class="input input-bordered w-full max-w-xs bg-white text-dark-slate-gray"
                   placeholder="Ingredients"
                 ></textarea>
+                <button
+                  type="button"
+                  class="btn btn-outline btn-success"
+                  id="add-ingredient-btn"
+                >
+                  + ingredient
+                </button>
               </div>
               <div class="form-control">
                 <label for="directions" class="form-label">
