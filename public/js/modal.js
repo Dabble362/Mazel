@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "w-full",
       "max-w-xs",
       "bg-white",
-      "text-dark-slate-gray"
+      "text-dark-slate-gray",
+      "my-2"
     );
     form.insertBefore(input, addButton);
     ingredientCount++;

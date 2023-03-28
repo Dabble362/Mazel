@@ -2142,6 +2142,14 @@ body[dir="rtl"] .checkbox:checked,
   margin-top: 40%;
 }
 
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-1\.5 {
+  margin-bottom: 0.375rem;
+}
+
 .inline {
   display: inline;
 }
