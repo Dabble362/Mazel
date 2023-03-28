@@ -5,6 +5,8 @@ const Comment = require("../models/Comments");
 
 module.exports = {
   getProfile: async (req, res) => {
+    const currentPage = "profile";
+    console.log(currentPage);
     console.log("getProfile was invoked");
     try {
       //since we have a session each request contains the logged in user's
@@ -13,20 +15,32 @@ module.exports = {
       //Grabbing just the Recipes of the logged in user
       const recipes = await Recipe.find({ user: req.user.id });
       //Sending post data from mongodb and user data to ejs template
-      res.render("profile.ejs", { recipes: recipes, user: req.user });
+      res.render("profile.ejs", {
+        recipes: recipes,
+        user: req.user,
+        currentPage: currentPage,
+      });
     } catch (err) {
       console.log(err);
     }
   },
   getFeed: async (req, res) => {
+    const currentPage = "feed";
+    console.log(currentPage);
     try {
       const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { recipes: recipes, user: req.user });
+      res.render("feed.ejs", {
+        recipes: recipes,
+        user: req.user,
+        currentPage: currentPage,
+      });
     } catch (err) {
       console.log(err);
     }
   },
   getRecipe: async (req, res) => {
+    const currentPage = "recipe";
+    console.log(currentPage);
     try {
       console.log("getRecipe was invoked");
       console.log(req.params);
@@ -37,19 +51,26 @@ module.exports = {
         recipe: recipe,
         user: req.user,
         comment: comment,
+        currentPage: currentPage,
       });
     } catch (err) {
       console.log(err);
     }
   },
   getFavorites: async (req, res) => {
+    const currentPage = "favorites";
+    console.log(currentPage);
     try {
       const recipes = await Favorite.find({ user: req.user.id }).populate(
         "recipe"
       );
 
       //Sending post data from mongodb and user data to ejs template
-      res.render("favorites.ejs", { recipes: recipes, user: req.user });
+      res.render("favorites.ejs", {
+        recipes: recipes,
+        user: req.user,
+        currentPage: currentPage,
+      });
     } catch (err) {
       console.log(err);
     }
