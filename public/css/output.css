@@ -2508,6 +2508,11 @@ body[dir="rtl"] .checkbox:checked,
   color: rgb(71 85 105 / var(--tw-text-opacity));
 }
 
+.text-emerald-900 {
+  --tw-text-opacity: 1;
+  color: rgb(6 78 59 / var(--tw-text-opacity));
+}
+
 .placeholder-zinc-700::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(63 63 70 / var(--tw-placeholder-opacity));
@@ -2516,6 +2521,16 @@ body[dir="rtl"] .checkbox:checked,
 .placeholder-zinc-700::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(63 63 70 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-dark-slate-gray::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(53 82 74 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-dark-slate-gray::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(53 82 74 / var(--tw-placeholder-opacity));
 }
 
 .shadow {
