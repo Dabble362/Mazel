@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-
+<%- include('partials/navbar') -%>
   <div class="flex flex-row justify-between ">
     <div class="flex flex-col w-5/6  bg-white/50 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
       <div class="flex">
@@ -28,56 +28,5 @@
   </div>
 </div>
 
-<!-- Put this part before </body> tag MODAL CREATE RECIPE CONTENT-->
-<input type="checkbox" id="my-modal-6" class="modal-toggle" />
-<div class="modal modal-bottom sm:modal-middle bg-pale-spring-bud">
-<div class="modal-box">
-  <!--form start-->
-  <div class="flex justify-end">
-  <div class="py-2 px-2 my-2 bg-pale-spring-bud w-full mx-auto flex-3">
-    <h2 class="text-caput-mortuum font-bold text-2xl">Have a recipe to share?</h2>
-    <!-- Create Recipe-->
-    <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
-    <div class="form-control w-full max-w-xs">
-      <label for="name" class="label">
-        <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
-        </label>
-        <input type="text" id="name" name="name" placeholder="recipe name"
-        class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
-      </div>
-      <div class="form-control">
-        <label for="ingredients" class="label">
-          <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
-        </label>
-        <textarea id="ingredients" name="ingredients"
-        class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700"
-        placeholder="Ingredients"></textarea>
-      </div>
-      <div class="form-control">
-        <label for="directions" class="form-label">
-          <span class="label-text text-lg font-bold text-dark-slate-gray">Directions</span>
-        </label>
-        <textarea class="textarea textarea-bordered h-24 bg-white" id="directions" name="directions"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="imgUpload" class="form-label text-lg font-bold text-dark-slate-gray">Image</label>
-        <input type="file" id="imageUpload" name="file" class="form-control
-        file:mr-4 
-        file:py-2 
-        file:px-4
-        file:rounded-full file:border-0
-        file:text-sm file:font-bold
-        file:bg-violet-50 file:text-forest-green
-        hover:file:bg-success-green hover:file:text-dark-slate-gray">
-      </div>
-      <button type="submit" class="btn btn-outline btn-success" value="Upload">Add A Recipe</button>
-    </form>
-  </div>
-  </div>
-  <!--form end-->
-  <div class="modal-action bg-pale-spring-bud">
-  <label for="my-modal-6" class="btn btn-outline btn-success">Close</label>
-  </div>
-</div>
-</div>
+<%- include('partials/modal') %>
 <%- include('partials/footer') -%>
