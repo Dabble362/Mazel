@@ -2174,12 +2174,20 @@ body[dir="rtl"] .checkbox:checked,
   height: 75%;
 }
 
+.h-\[300px\] {
+  height: 300px;
+}
+
 .max-h-20 {
   max-height: 5rem;
 }
 
 .max-h-\[450px\] {
   max-height: 450px;
+}
+
+.max-h-\[300px\] {
+  max-height: 300px;
 }
 
 .min-h-screen {
@@ -2700,6 +2708,10 @@ body[dir="rtl"] .checkbox:checked,
 }
 
 @media (min-width: 1024px) {
+  .lg\:mt-0 {
+    margin-top: 0px;
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

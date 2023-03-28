@@ -5,28 +5,35 @@
     <div class="flex">
       <h2 class="my-4 pb-2 text-4xl w-full font-bold text-dark-slate-gray bg-gradient-to-r from-base-100 border-b-4 border-forest-green">My Favorites</h2>
     </div>
+    <% if(recipes.length === 0) { %>
+      <div class="flex h-screen justify-center">
+      <p class="text-center p-[8%] w-3/4 h-[300px] text-dark-slate-gray text-1xl font-bold bg-white/50">
+        Oops, it looks like your recipe collection is empty! Time to start finding your favs - browse the feed for some recipes and click the heart to add them!
+      </p>
+      <div>
+      <% } else { %>
     <ul class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
       <% for(var i=0; i<recipes.length; i++) {%>
-        <li>
-          <div class="max-h-[450px] card h-max-[475px] bg-base-100 shadow-xl">
-            <figure class="flex-1 overflow-hidden">
-              <img class="object-center object-cover" src="<%= recipes[i].recipe.image%>" alt="#"/>
-            </figure>
-            <div class="card-body">
-              <a href="/recipe/<%= recipes[i].recipe._id%>">
-                <h2 class="card-title text-dark-slate-gray"><%= recipes[i].recipe.name %></h2>
-                <p class="max-h-20 text-dark-slate-gray text-ellipsis overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie dapibus augue quis rutrum. Ut nibh urna, suscipit quis elementum vel, rhoncus ut nibh. Nam non nisl nec dolor pretium consectetur eget ac quam. Sed in tortor at purus mollis posuere id nec nunc. Vivamus consequat massa nulla. Ut consectetur eros ex, eu porttitor massa bibendum volutpat. Nulla vitae efficitur ipsum. Morbi lobortis pulvinar arcu at dapibus. Aliquam at enim lobortis, fermentum sapien a, rutrum augue.</p>
-                <div class="card-actions justify-end">
-                  <button class="btn btn-outline btn-success">Go</button>
-                </div>
-              </a>
-            </div>
+      <li>
+        <div class="max-h-[450px] card h-max-[475px] bg-base-100 shadow-xl">
+          <figure class="flex-1 overflow-hidden">
+            <img class="object-center object-cover" src="<%= recipes[i].recipe.image%>" alt="#"/>
+          </figure>
+          <div class="card-body">
+            <a href="/recipe/<%= recipes[i].recipe._id%>">
+              <h2 class="card-title text-dark-slate-gray"><%= recipes[i].recipe.name %></h2>
+              <p class="max-h-20 text-dark-slate-gray text-ellipsis overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie dapibus augue quis rutrum. Ut nibh urna, suscipit quis elementum vel, rhoncus ut nibh. Nam non nisl nec dolor pretium consectetur eget ac quam. Sed in tortor at purus mollis posuere id nec nunc. Vivamus consequat massa nulla. Ut consectetur eros ex, eu porttitor massa bibendum volutpat. Nulla vitae efficitur ipsum. Morbi lobortis pulvinar arcu at dapibus. Aliquam at enim lobortis, fermentum sapien a, rutrum augue.</p>
+              <div class="card-actions justify-end">
+                <button class="btn btn-outline btn-success">Go</button>
+              </div>
+            </a>
           </div>
-        </li>
-        <% } %>
-      </ul>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+    <% } %>
     </div>
 </div>
-<!--MODAL MENU-->
 <%- include('partials/modal') %>
 <%- include('partials/footer') -%>

@@ -7,8 +7,8 @@
       </div>
       <!--///////////////////////////////// RECIPE CARD START /////////////////////////////////-->
       <% if(recipes.length === 0) { %>
-        <div class="flex justify-center h-screen">
-        <p class="text-center p-[8%] w-3/4 h-[200px] mt-[40%] text-dark-slate-gray text-1xl font-bold bg-white/50">We know the best recipes come from the heart, and we can't wait to see what you've got cooking! Start by adding your favorite recipe and let's create some culinary magic together</p>
+        <div class="flex h-screen justify-center">
+        <p class="text-center p-[8%] w-3/4 h-[300px] text-dark-slate-gray text-1xl font-bold bg-white/50">We know the best recipes come from the heart, and we can't wait to see what you've got cooking! Start by adding your favorite recipe and let's create some culinary magic together</p>
         <div>
         <% } else { %>
           <ul
@@ -17,7 +17,7 @@
           <li>
             <div class="card lg:card-side bg-base-100 shadow-xl">
               <figure class="w-[50%]">
-                <img class="w-fit h-[200px]" src="<%= recipes[i].image%>" alt="#" />
+                <img class="w-fit max-h-[300px]" src="<%= recipes[i].image%>" alt="#" />
               </figure>
               <div class="card-body w-[50%]">
                 <a href="/recipe/<%= recipes[i]._id%>">
