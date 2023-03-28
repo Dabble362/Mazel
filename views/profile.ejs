@@ -1,44 +1,5 @@
 <%- include('partials/header') -%>
-  <div class="flex flex-col bg-white/50 w-5/6 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
-    <div class="navbar mt-7 flex-wrap md:flex-nowrap bg-gradient-to-r from-base-100">
-      <div class="md:navbar-start">
-        <div class="dropdown">
-          <label tabindex="0" class="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-[#073D00]" fill="forest-green"
-              viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-            </svg>
-          </label>
-          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <!-- ||Modal Create Recipe START >>>>>>> -->
-              <!-- <<<<<<< END Modal Create Recipe ||  -->
-              <label for="my-modal-6" class="btn">Create Recipe</label>
 
-              <!-- <<<<<<< END Modal Create Recipe ||  -->
-            </li>
-            <li> <a href="/favorites" class=" flex-1 btn btn-outline btn-success">Go to Favorites</a></li>
-            <li> <a class="btn btn-outline btn-success flex-1" href="/feed">Return to Feed</a></li>
-            <li> <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="navbar-center">
-        <a class="btn btn-ghost normal-case text-xl">
-          <p class="font-bold text-dark-slate-gray"><strong><em>Shalom</strong>
-            <%= user.userName %>!</em>
-          </p>
-        </a>
-      </div>
-      <div class=" md:navbar-end">
-        <form method="POST" name="" action="/recipe/searchRecipes">
-          <div class="form-control w-[250px]">
-            <input type="text" id="searchBar" class="input input-bordered" />
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
   <div class="flex flex-row justify-between ">
     <div class="flex flex-col w-5/6  bg-white/50 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
       <div class="flex">
