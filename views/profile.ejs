@@ -5,9 +5,14 @@
       <div class="flex">
         <h2 class="my-4 pb-2 text-4xl w-full font-bold text-dark-slate-gray bg-gradient-to-r from-base-100 border-b-4 border-forest-green">My Recipes</h2>
       </div>
-
-      <ul
-        class="flex flex-col md:flex-none md:grid lg:gap-4 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-4 lg:grid-rows-3">
+      <!--///////////////////////////////// RECIPE CARD START /////////////////////////////////-->
+      <% if(recipes.length === 0) { %>
+        <div class="flex justify-center h-screen">
+        <p class="text-center p-[8%] w-3/4 h-[200px] mt-[40%] text-dark-slate-gray text-1xl font-bold bg-white/50">We know the best recipes come from the heart, and we can't wait to see what you've got cooking! Start by adding your favorite recipe and let's create some culinary magic together</p>
+        <div>
+        <% } else { %>
+          <ul
+            class="flex flex-col md:flex-none md:grid lg:gap-4 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-4 lg:grid-rows-3">
         <% for(var i=0; i<recipes.length; i++) {%>
           <li>
             <div class="card lg:card-side bg-base-100 shadow-xl">
@@ -28,28 +33,9 @@
             </div>
           </li>
           <% } %>
-      </ul>
-
-      <!-- <ul class="flex flex-wrap flex-row">
-        <% for(var i=0; i<recipes.length; i++) {%>
-          <li class="justify-between p-4 flex-1 card bg-pale-spring-bud shadow-xl">
-            <div class="card-body">
-              <a href="/recipe/<%= recipes[i]._id%>">
-                <h2 class="text-caput-mortuum font-bold text-2xl card-title">
-                  <%= recipes[i].name %>
-                </h2>
-                <figure><img class="inline" src="<%= recipes[i].image%>"></figure>
-                <p class="text-dark-slate-gray text-2xl">
-                  <%= recipes[i].ingredients %>
-                </p>
-                <p class="text-dark-slate-gray text-2xl">
-                  <%= recipes[i].directions %>
-                </p>
-              </a>
-            </div>
-          </li>
-          <% } %>
-        </ul> -->
+        </ul>
+      <% } %>
+        <!--///////////////////////////////// RECIPE CARD END /////////////////////////////////-->
     </div>
   </div>
   <!-- Put this part before </body> tag MODAL CREATE RECIPE CONTENT-->
