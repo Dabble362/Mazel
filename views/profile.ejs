@@ -12,19 +12,19 @@
         <div>
         <% } else { %>
           <ul
-            class="flex flex-col md:flex-none md:grid lg:gap-4 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-4 lg:grid-rows-3">
+            class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <% for(var i=0; i<recipes.length; i++) {%>
           <li>
-            <div class="card lg:card-side bg-base-100 shadow-xl">
-              <figure class="w-[50%]">
-                <img class="w-fit max-h-[300px]" src="<%= recipes[i].image%>" alt="#" />
+            <div class="max-h-[450px] card h-max-[475px] bg-base-100 shadow-xl">
+              <figure class="flex-1 overflow-hidden">
+                <img class="object-center object-cover" src="<%= recipes[i].image%>" alt="#" />
               </figure>
-              <div class="card-body w-[50%]">
+              <div class="card-body">
                 <a href="/recipe/<%= recipes[i]._id%>">
-                  <h2 class="card-title">
+                  <h2 class="card-title text-dark-slate-gray">
                     <%= recipes[i].name %>
                   </h2>
-                  <p>The description will go here</p>
+                  <p class="max-h-20 text-dark-slate-gray text-ellipsis overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie dapibus augue quis rutrum. Ut nibh urna, suscipit quis elementum vel, rhoncus ut nibh. Nam non nisl nec dolor pretium consectetur eget ac quam. Sed in tortor at purus mollis posuere id nec nunc. Vivamus consequat massa nulla. Ut consectetur eros ex, eu porttitor massa bibendum volutpat. Nulla vitae efficitur ipsum. Morbi lobortis pulvinar arcu at dapibus. Aliquam at enim lobortis, fermentum sapien a, rutrum augue.</p>
                   <div class="card-actions justify-end">
                     <button class="btn btn-outline btn-success">Discover</button>
                   </div>
