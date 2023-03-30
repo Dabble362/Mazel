@@ -2239,10 +2239,6 @@ body[dir="rtl"] .checkbox:checked,
   height: 300px;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
 .h-5 {
   height: 1.25rem;
 }
