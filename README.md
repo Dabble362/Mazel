@@ -1,4 +1,4 @@
-<img src="https://i.ibb.co/vmpp43P/pexels-lucie-liz-mazel-banner.jpg" alt="pexels-lucie-liz-mazel-banner" border="0">
+<a href="https://ibb.co/jGmmkyM"><img src="https://i.ibb.co/vmpp43P/pexels-lucie-liz-mazel-banner.jpg" alt="pexels-lucie-liz-mazel-banner" border="0"></a>
 # Mazel App
 ---
 Mazel is a web application that allows users to upload and share their favorite recipes, as well as comment on and search for other users' recipes.
