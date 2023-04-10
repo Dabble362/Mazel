@@ -25,16 +25,16 @@
               <label for="description" class="form-label">
                 <span class="label-text text-lg font-bold text-dark-slate-gray">Description</span>
               </label>
-              <textarea class="textarea textarea-bordered my-2 h-22 bg-white text-dark-slate-gray" id="directions"
-                name="directions">
+              <textarea class="textarea textarea-bordered my-2 h-22 bg-white text-dark-slate-gray" id="description"
+                name="description">
               </textarea>
             </div>
 
             <div id="recipe-form" class="form-control">
-              <label for="ingredients" class="label">
+              <label for="ingredients[]" class="label">
                 <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
               </label>
-              <input id="ingredients" name="ingredients"
+              <input id="ingredients" name="ingredients[]"
                 class="input input-bordered mb-2 w-full max-w-xs bg-white text-dark-slate-gray"
                 placeholder="Ingredient"></input>
               <button type="button" class="btn btn-outline btn-success" id="add-ingredient-btn">

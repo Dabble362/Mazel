@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("The add ingredient button has been clicked!");
     const input = document.createElement("input");
     input.type = "text";
-    input.name = `ingredient ${ingredientCount}`;
+    input.name = `ingredients[]`;
     input.placeholder = `ingredient ${ingredientCount}`;
     input.classList.add(
       "input",

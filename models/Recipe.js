@@ -14,7 +14,7 @@ const RecipeSchema = new mongoose.Schema({
     require: true,
   },
   ingredients: {
-    type: String,
+    type: Array,
     required: true,
   },
   description: {
@@ -30,7 +30,7 @@ const RecipeSchema = new mongoose.Schema({
     ref: "User",
   },
   directions: {
-    type: String,
+    type: Array,
     required: true,
   },
   createdAt: {

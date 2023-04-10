@@ -2452,11 +2452,6 @@ body[dir="rtl"] .checkbox:checked,
   padding-bottom: 0.5rem;
 }
 
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -2669,17 +2664,8 @@ body[dir="rtl"] .checkbox:checked,
 }
 
 @media (min-width: 400px) {
-  .sm\:w-5\/6 {
-    width: 83.333333%;
-  }
-
   .sm\:w-11\/12 {
     width: 91.666667%;
-  }
-
-  .sm\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem;
   }
 
   @media not all and (min-width: 1024px) {
@@ -2690,10 +2676,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 
 @media (min-width: 800px) {
-  .md\:w-5\/6 {
-    width: 83.333333%;
-  }
-
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

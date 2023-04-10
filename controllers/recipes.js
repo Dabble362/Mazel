@@ -77,19 +77,22 @@ module.exports = {
   },
   createRecipe: async (req, res) => {
     try {
+      console.log(`attempting to submit recipe!`);
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-
+      console.log(req.body);
       await Recipe.create({
         name: req.body.name,
         image: result.secure_url,
         cloudinaryId: result.public_id,
+        description: req.body.description,
         ingredients: req.body.ingredients,
         directions: req.body.directions,
         likes: 0,
         user: req.user.id,
       });
       console.log("Recipe has been added!");
+
       res.redirect("/profile");
     } catch (err) {
       console.log(err);
