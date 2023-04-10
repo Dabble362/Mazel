@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("The add ingredient button has been clicked!");
     const textArea = document.createElement("textarea");
     textArea.type = "text";
-    textArea.name = `step ${stepsCount}`;
+    textArea.name = `directions[]`;
     textArea.placeholder = `step # ${stepsCount}`;
     textArea.classList.add(
       "textarea",
