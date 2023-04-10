@@ -82,12 +82,18 @@ module.exports = {
       const result = await cloudinary.uploader.upload(req.file.path);
       console.log(req.body);
       console.log(typeof req.body.ingredients);
+      console.log(Object.entries(req.body.ingredients));
       await Recipe.create({
         name: req.body.name,
         image: result.secure_url,
         cloudinaryId: result.public_id,
         description: req.body.description,
         ingredients: req.body.ingredients,
+        // Object.keys(req.body.ingredients).reduce((acc, key) => {
+        //   const trimmedValue = req.body.ingredients[key].trim();
+        //   acc[key] = trimmedValue;
+        //   return acc;
+        // }, {}),
         directions: req.body.directions,
         likes: 0,
         user: req.user.id,
