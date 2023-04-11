@@ -38,15 +38,43 @@
         <%}%>
       </div>
     </div>
+
+    <!-- recipe description -->
+      <% if(recipe.description) { %>
+      <div class="flex flex-col w-9/12">
+
+        <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Description</h3>
+        <p class="text-dark-slate-gray text-lg" ><%=recipe.description%> </p>
+
+      </div>
+      <%}%>
     <!-- recipe ingredients -->
     <div class="flex flex-col w-9/12">
       <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Ingredients</h3>
-      <p class="text-dark-slate-gray text-lg"><%= recipe.ingredients %></p>
+      
+      <% if(Array.isArray(recipe.ingredients)) { %>
+        <ul class="text-dark-slate-gray text-lg list-disc">
+          <% for(let i = 0; i < recipe.ingredients.length; i++) { %>
+            <li class="text-dark-slate-gray text-lg py-3"><%=recipe.ingredients[i]%><li>
+          <%}%>
+        </ul>
+      <% } else { %>
+        <p class="text-dark-slate-gray text-lg" ><%=recipe.ingredients%> </p>
+      <% } %>
+      
     </div>
     <!-- recipe directions -->
     <div class="flex flex-col w-9/12">
-      <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Instructions</h3>
-      <p class="text-dark-slate-gray text-lg"><%= recipe.directions %></p>
+      <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Directions</h3>
+      <% if(Array.isArray(recipe.directions)) { %>
+        <ul class="text-dark-slate-gray text-lg list-decimal">
+          <% for(let i = 0; i < recipe.directions.length; i++) { %>
+            <li class="text-dark-slate-gray text-lg py-3"><%=recipe.directions[i]%><li>
+          <%}%>
+        </ul>
+      <% } else { %>
+        <p class="text-dark-slate-gray text-lg" ><%=recipe.directions%> </p>
+      <% } %>
     </div>
     <!-- recipe comments -->
     <div class="flex flex-col w-9/12">

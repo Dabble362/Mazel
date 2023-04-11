@@ -81,8 +81,12 @@ module.exports = {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
       console.log(req.body);
+      console.log(typeof req.body.description);
+      console.log(Object.entries(req.body.description));
       console.log(typeof req.body.ingredients);
       console.log(Object.entries(req.body.ingredients));
+      console.log(typeof req.body.directions);
+      console.log(Object.entries(req.body.directions));
       await Recipe.create({
         name: req.body.name,
         image: result.secure_url,
