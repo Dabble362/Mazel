@@ -2294,6 +2294,10 @@ body[dir="rtl"] .checkbox:checked,
   height: 100vh;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .max-h-20 {
   max-height: 5rem;
 }
@@ -2336,6 +2340,10 @@ body[dir="rtl"] .checkbox:checked,
 
 .w-screen {
   width: 100vw;
+}
+
+.max-w-\[1286px\] {
+  max-width: 1286px;
 }
 
 .flex-1 {
