@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./views/*.ejs", "./views/partials/*.ejs"],
   theme: {
@@ -13,6 +16,9 @@ module.exports = {
       eighty: "80%",
     },
     extend: {
+      fontFamily: {
+        sans: ["Outfit", ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         "key-lime": "#EDEF8A",
         "forest-green": "#073D00",
