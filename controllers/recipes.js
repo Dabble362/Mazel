@@ -101,6 +101,7 @@ module.exports = {
         directions: req.body.directions,
         likes: 0,
         user: req.user.id,
+        userName: req.user.userName,
       });
       console.log("Recipe has been added!");
 
