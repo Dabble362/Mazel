@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <ul class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <% for(var i=0; i<recipes.length; i++) {%>
+            <li>
+                <div class="max-h-[450px] card h-max-[475px] bg-base-100 shadow-xl">
+                    <figure class="flex-1 overflow-hidden">
+                        <img
+                        class="object-center object-cover"
+                        src="<%= recipes[i].image%>"
+                        alt="#"
+                        />
+                    </figure>
+                    <div class="card-body">
+                        <a href="/recipe/<%= recipes[i]._id%>">
+                            <h2 class="card-title text-dark-slate-gray">
+                                <%= recipes[i].name %>
+                            </h2>
+                            <p class="max-h-20 text-dark-slate-gray text-ellipsis overflow-hidden">
+                                <%= recipes[i].description %>
+                            </p>
+                            <div class="card-actions justify-end">
+                                <button class="btn btn-outline btn-success">Discover</button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        <% } %>
+    </ul>
+  </body>
+</html>
