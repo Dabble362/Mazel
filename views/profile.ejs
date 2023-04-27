@@ -27,5 +27,11 @@
     </div>
     <!-- Put this part before </body> tag MODAL CREATE RECIPE CONTENT-->
     <%- include('partials/modal') %> <%- include('partials/footer') -%>
+    <div class="dash-link-container">
+      <a href="/profile?skip=<%=skip-4 %> ">Previous</a>
+      <a href="/profile?skip=<%=skip+4 > userRecipeCount ? skip : skip+4 %>"
+        >Next</a
+      >
+    </div>
   </div>
 </div>

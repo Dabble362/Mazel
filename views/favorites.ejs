@@ -35,5 +35,11 @@
     <% } %>
     </div>
 </div>
+<div class="dash-link-container">
+  <a href="/favorites?skip=<%=skip-4 %> ">Previous</a>
+  <a href="/favorites?skip=<%=skip+4 > totalFavorites ? skip : skip+4 %>"
+    >Next</a
+  >
+</div>
 <%- include('partials/modal') %>
 <%- include('partials/footer') -%>

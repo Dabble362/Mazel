@@ -1,11 +1,15 @@
 const cloudinary = require("../middleware/cloudinary");
+const mongoose = require('mongoose');
 const Recipe = require("../models/Recipe");
 const Favorite = require("../models/Favorite");
 const Comment = require("../models/Comments");
+const { response } = require("express");
 
 module.exports = {
   getProfile: async (req, res) => {
     const currentPage = "profile";
+    const skip = parseInt(req.query.skip || '0') <= 0 ? 0 : parseInt(req.query.skip);
+    const limit = req.query.limit || 4;
     console.log(currentPage);
     console.log("getProfile was invoked");
     try {
@@ -13,11 +17,28 @@ module.exports = {
       //info: req.user
       //console.log(req.user) to see everything
       //Grabbing just the Recipes of the logged in user
-      const recipes = await Recipe.find({ user: req.user.id });
-      //Sending post data from mongodb and user data to ejs template
+      console.log(req.user.id);
+
+const dataPipeline = [
+  { '$match' : { user: mongoose.Types.ObjectId(req.user.id) } },
+  { '$skip' : skip },
+  { '$limit' : limit }
+];
+
+const recipes = await Recipe.aggregate(dataPipeline);
+console.log(`Here is RecipesData ${recipes}`);
+      
+      // const totalRecipes = recipes[0].count[0].count;
+            // Sending post data from mongodb and user data to ejs template
+
+            const userRecipeCount = await Recipe.countDocuments({ user: req.user.id });
+console.log(`User ${req.user.id} has ${userRecipeCount} recipes in the collection.`);
+
       res.render("profile.ejs", {
         recipes: recipes,
         user: req.user,
+        skip,
+        userRecipeCount,
         currentPage: currentPage,
       });
     } catch (err) {
@@ -26,12 +47,22 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     const currentPage = "feed";
+    const skip = parseInt(req.query.skip || '0') <= 0 ? 0 : parseInt(req.query.skip);
+    const limit = req.query.limit || 4;
     console.log(currentPage);
     try {
-      const recipes = await Recipe.find().sort({ createdAt: "desc" }).lean();
+      const totalRecipes = await Recipe.countDocuments();
+      const recipes = await Recipe.find()
+        .sort({ createdAt: "desc" })
+        .skip(skip)
+        .limit(limit)
+        .lean();
       res.render("feed.ejs", {
         recipes: recipes,
         user: req.user,
+        skip: skip,
+        limit: limit,
+        totalRecipes: totalRecipes,
         currentPage: currentPage,
       });
     } catch (err) {
@@ -59,15 +90,22 @@ module.exports = {
   },
   getFavorites: async (req, res) => {
     const currentPage = "favorites";
+    const skip = parseInt(req.query.skip || '0') <= 0 ? 0 : parseInt(req.query.skip);
+    const limit = req.query.limit || 4;
     console.log(currentPage);
     try {
-      const recipes = await Favorite.find({ user: req.user.id }).populate(
-        "recipe"
-      );
+      const totalFavorites = await Favorite.find({ user: req.user.id }).countDocuments();
+      const recipes = await Favorite.find({ user: req.user.id })
+        .populate("recipe")
+        .skip(skip)
+        .limit(limit);
 
       //Sending post data from mongodb and user data to ejs template
       res.render("favorites.ejs", {
         recipes: recipes,
+        totalFavorites: totalFavorites,
+        skip: skip,
+        limit: limit,
         user: req.user,
         currentPage: currentPage,
       });

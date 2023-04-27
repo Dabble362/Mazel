@@ -11,6 +11,12 @@
       </h2>
     </div>
     <%- include('partials/recipeCard') -%>
+    <div class="dash-link-container">
+      <a href="/feed?skip=<%=skip-4 %> ">Previous</a>
+      <a href="/feed?skip=<%=skip+4 > totalRecipes ? skip : skip+4 %>"
+        >Next</a
+      >
+    </div>
   </div>
 </div>
 
