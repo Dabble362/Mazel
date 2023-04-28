@@ -1,5 +1,5 @@
 const cloudinary = require("../middleware/cloudinary");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Recipe = require("../models/Recipe");
 const Favorite = require("../models/Favorite");
 const Comment = require("../models/Comments");
@@ -8,7 +8,8 @@ const { response } = require("express");
 module.exports = {
   getProfile: async (req, res) => {
     const currentPage = "profile";
-    const skip = parseInt(req.query.skip || '0') <= 0 ? 0 : parseInt(req.query.skip);
+    const skip =
+      parseInt(req.query.skip || "0") <= 0 ? 0 : parseInt(req.query.skip);
     const limit = req.query.limit || 4;
     console.log(currentPage);
     console.log("getProfile was invoked");
@@ -19,20 +20,24 @@ module.exports = {
       //Grabbing just the Recipes of the logged in user
       console.log(req.user.id);
 
-const dataPipeline = [
-  { '$match' : { user: mongoose.Types.ObjectId(req.user.id) } },
-  { '$skip' : skip },
-  { '$limit' : limit }
-];
+      const dataPipeline = [
+        { $match: { user: mongoose.Types.ObjectId(req.user.id) } },
+        { $skip: skip },
+        { $limit: limit },
+      ];
 
-const recipes = await Recipe.aggregate(dataPipeline);
-console.log(`Here is RecipesData ${recipes}`);
-      
+      const recipes = await Recipe.aggregate(dataPipeline);
+      console.log(`Here is RecipesData ${recipes}`);
+
       // const totalRecipes = recipes[0].count[0].count;
-            // Sending post data from mongodb and user data to ejs template
+      // Sending post data from mongodb and user data to ejs template
 
-            const userRecipeCount = await Recipe.countDocuments({ user: req.user.id });
-console.log(`User ${req.user.id} has ${userRecipeCount} recipes in the collection.`);
+      const userRecipeCount = await Recipe.countDocuments({
+        user: req.user.id,
+      });
+      console.log(
+        `User ${req.user.id} has ${userRecipeCount} recipes in the collection.`
+      );
 
       res.render("profile.ejs", {
         recipes: recipes,
@@ -47,7 +52,8 @@ console.log(`User ${req.user.id} has ${userRecipeCount} recipes in the collectio
   },
   getFeed: async (req, res) => {
     const currentPage = "feed";
-    const skip = parseInt(req.query.skip || '0') <= 0 ? 0 : parseInt(req.query.skip);
+    const skip =
+      parseInt(req.query.skip || "0") <= 0 ? 0 : parseInt(req.query.skip);
     const limit = req.query.limit || 4;
     console.log(currentPage);
     try {
@@ -90,11 +96,14 @@ console.log(`User ${req.user.id} has ${userRecipeCount} recipes in the collectio
   },
   getFavorites: async (req, res) => {
     const currentPage = "favorites";
-    const skip = parseInt(req.query.skip || '0') <= 0 ? 0 : parseInt(req.query.skip);
+    const skip =
+      parseInt(req.query.skip || "0") <= 0 ? 0 : parseInt(req.query.skip);
     const limit = req.query.limit || 4;
     console.log(currentPage);
     try {
-      const totalFavorites = await Favorite.find({ user: req.user.id }).countDocuments();
+      const totalFavorites = await Favorite.find({
+        user: req.user.id,
+      }).countDocuments();
       const recipes = await Favorite.find({ user: req.user.id })
         .populate("recipe")
         .skip(skip)
@@ -117,7 +126,9 @@ console.log(`User ${req.user.id} has ${userRecipeCount} recipes in the collectio
     try {
       console.log(`attempting to submit recipe!`);
       // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
+      const result = await cloudinary.uploader
+        .upload(req.file.path, { width: 600, height: 600, crop: "fill" })
+        .then((result) => console.log(result));
       console.log(req.body);
       console.log(typeof req.body.description);
       console.log(Object.entries(req.body.description));
