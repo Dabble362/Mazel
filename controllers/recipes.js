@@ -10,7 +10,7 @@ module.exports = {
     const currentPage = "profile";
     const skip =
       parseInt(req.query.skip || "0") <= 0 ? 0 : parseInt(req.query.skip);
-    const limit = req.query.limit || 4;
+    const limit = req.query.limit || 6;
     console.log(currentPage);
     console.log("getProfile was invoked");
     try {
