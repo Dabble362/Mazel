@@ -2458,8 +2458,8 @@ body[dir="rtl"] .checkbox:checked,
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
-.bg-sm-background {
-  background-image: url('../imgs/pexels-elle-hughes-sm.jpg');
+.bg-veggie-top {
+  background-image: url('../imgs/veggietoplong.jpg');
 }
 
 .from-base-100 {
@@ -2472,10 +2472,6 @@ body[dir="rtl"] .checkbox:checked,
   --tw-gradient-from: hsl(var(--b1) / 0.75);
   --tw-gradient-to: hsl(var(--b1) / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.bg-cover {
-  background-size: cover;
 }
 
 .stroke-\[\#073D00\] {
@@ -2666,6 +2662,11 @@ body[dir="rtl"] .checkbox:checked,
     width: 50%;
     justify-content: flex-end;
   }
+
+  .md\:shadow-solid-primary {
+    box-shadow: 10px 10px #b57bff;
+    text-shadow: 40px;
+  }
 }
 
 .file\:mr-4::file-selector-button {
@@ -2765,9 +2766,28 @@ body[dir="rtl"] .checkbox:checked,
     flex-wrap: nowrap;
   }
 
+  .md\:border-2 {
+    border-width: 2px;
+  }
+
+  .md\:border-black {
+    --tw-border-opacity: 1;
+    border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  }
+
   .md\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
+  }
+
+  .md\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .md\:py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .md\:pb-16 {
@@ -2798,10 +2818,6 @@ body[dir="rtl"] .checkbox:checked,
     width: 66.666667%;
   }
 
-  .lg\:bg-lg-background {
-    background-image: url('../imgs/pexels-elle-hughes-lg.jpg');
-  }
-
   .lg\:backdrop-blur-xs {
     --tw-backdrop-blur: blur(1px);
     -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
@@ -2823,9 +2839,5 @@ body[dir="rtl"] .checkbox:checked,
 
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .xl\:bg-xl-background {
-    background-image: url('../imgs/pexels-elle-hughes-1660030.jpg');
   }
 }

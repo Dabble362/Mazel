@@ -29,6 +29,7 @@ module.exports = {
         "max-yel-green": "#DEEf57",
       },
       backgroundImage: {
+        "veggie-top": "url('../imgs/veggietoplong.jpg')",
         "xl-background": "url('../imgs/pexels-elle-hughes-1660030.jpg')",
         "sm-background": "url('../imgs/pexels-elle-hughes-sm.jpg')",
         "lg-background": "url('../imgs/pexels-elle-hughes-lg.jpg')",
