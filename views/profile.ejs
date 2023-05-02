@@ -27,9 +27,17 @@
     </div>
     <!-- Put this part before </body> tag MODAL CREATE RECIPE CONTENT-->
     <%- include('partials/modal') %> <%- include('partials/footer') -%>
-    <div class="dash-link-container">
-      <a href="/profile?skip=<%=skip-6 %> ">Previous</a>
-      <a href="/profile?skip=<%=skip+6 > userRecipeCount ? skip : skip+6 %>"
+    <div
+      class="flex flex-col md:flex-row justify-center bg-white rounded md:py-2 md:px-12 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black"
+    >
+      <a
+        href="/profile?skip=<%=skip-6 %> "
+        class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]"
+        >Previous</a
+      >
+      <a
+        href="/profile?skip=<%=skip+6 > userRecipeCount ? skip : skip+6 %>"
+        class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]"
         >Next</a
       >
     </div>

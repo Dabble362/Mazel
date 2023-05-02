@@ -11,9 +11,19 @@
       </h2>
     </div>
     <%- include('partials/recipeCard') -%>
-    <div class="dash-link-container">
-      <a href="/feed?skip=<%=skip-4 %> ">Previous</a>
-      <a href="/feed?skip=<%=skip+4 > totalRecipes ? skip : skip+4 %>">Next</a>
+    <div
+      class="flex flex-col md:flex-row justify-center bg-white rounded md:py-2 md:px-12 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black"
+    >
+      <a
+        class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]"
+        href="/feed?skip=<%=skip-4 %> "
+        >Previous</a
+      >
+      <a
+        class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]"
+        href="/feed?skip=<%=skip+4 > totalRecipes ? skip : skip+4 %>"
+        >Next</a
+      >
     </div>
   </div>
 </div>

@@ -41,9 +41,9 @@
     <% } %>
     </div>
 </div>
-<div class="dash-link-container">
-  <a href="/favorites?skip=<%=skip-4 %> ">Previous</a>
-  <a href="/favorites?skip=<%=skip+4 > totalFavorites ? skip : skip+4 %>"
+<div class="flex flex-col md:flex-row justify-center bg-white rounded md:py-2 md:px-12 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black">
+  <a class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]" href="/favorites?skip=<%=skip-4 %> ">Previous</a>
+  <a class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]" href="/favorites?skip=<%=skip+4 > totalFavorites ? skip : skip+4 %>"
     >Next</a
   >
 </div>
