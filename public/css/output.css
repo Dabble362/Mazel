@@ -2234,6 +2234,10 @@ body[dir="rtl"] .checkbox:checked,
   text-shadow: 40px;
 }
 
+.shadow-solid-black {
+  box-shadow: 2px 2px black;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
