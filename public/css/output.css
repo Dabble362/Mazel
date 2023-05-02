@@ -2292,6 +2292,14 @@ body[dir="rtl"] .checkbox:checked,
   height: 100vh;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
 .max-h-20 {
   max-height: 5rem;
 }
@@ -2330,6 +2338,14 @@ body[dir="rtl"] .checkbox:checked,
 
 .w-screen {
   width: 100vw;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.w-12 {
+  width: 3rem;
 }
 
 .flex-1 {
@@ -2376,6 +2392,10 @@ body[dir="rtl"] .checkbox:checked,
   justify-content: space-between;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -2390,6 +2410,10 @@ body[dir="rtl"] .checkbox:checked,
 
 .rounded {
   border-radius: 0.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-r-lg {
@@ -2524,6 +2548,11 @@ body[dir="rtl"] .checkbox:checked,
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pb-2 {
@@ -2844,6 +2873,11 @@ body[dir="rtl"] .checkbox:checked,
     .lg\:max-xl\:bg-\[\#B5CFC8\] {
       --tw-bg-opacity: 1;
       background-color: rgb(181 207 200 / var(--tw-bg-opacity));
+    }
+
+    .lg\:max-xl\:bg-\[\#b57bff\] {
+      --tw-bg-opacity: 1;
+      background-color: rgb(181 123 255 / var(--tw-bg-opacity));
     }
   }
 }
