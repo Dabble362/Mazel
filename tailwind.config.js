@@ -11,6 +11,7 @@ module.exports = {
       md: "800px",
       lg: "1024px",
       xl: "1500px",
+      xxl: "2400px",
     },
     maxWidth: {
       eighty: "80%",
