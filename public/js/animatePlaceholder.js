@@ -12,9 +12,9 @@ function animatePlaceholder() {
       index++;
     }, msDelayBetweenLetters);
 
-    setmsDelayBetweenLettersout(() => {
+    setTimeout(() => {
       clearInterval(interval);
-    }, msDelayBetweenLetters * (sentence.length + 1));
+    }, msDelayBetweenLetters * sentence.length + 1000);
   }
 }
 
