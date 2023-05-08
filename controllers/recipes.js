@@ -4,12 +4,14 @@ const Recipe = require("../models/Recipe");
 const Favorite = require("../models/Favorite");
 const Comment = require("../models/Comments");
 const { response } = require("express");
-//<!--comment-->
+
 module.exports = {
   getProfile: async (req, res) => {
     const currentPage = "profile";
     const skip =
-      parseInt(req.query.skip || "0") <= 0 ? 0 : parseInt(req.query.skip);
+      parseInt(req.query.skip || "0", 10) <= 0
+        ? 0
+        : parseInt(req.query.skip, 10);
     const limit = req.query.limit || 6;
     console.log(currentPage);
     console.log("getProfile was invoked");
@@ -29,7 +31,6 @@ module.exports = {
       const recipes = await Recipe.aggregate(dataPipeline);
       console.log(`Here is RecipesData ${recipes}`);
 
-      // const totalRecipes = recipes[0].count[0].count;
       // Sending post data from mongodb and user data to ejs template
 
       const userRecipeCount = await Recipe.countDocuments({
@@ -53,7 +54,9 @@ module.exports = {
   getFeed: async (req, res) => {
     const currentPage = "feed";
     const skip =
-      parseInt(req.query.skip || "0") <= 0 ? 0 : parseInt(req.query.skip);
+      parseInt(req.query.skip || "0", 10) <= 0
+        ? 0
+        : parseInt(req.query.skip, 10);
     const limit = req.query.limit || 4;
     console.log(currentPage);
     try {
@@ -97,7 +100,9 @@ module.exports = {
   getFavorites: async (req, res) => {
     const currentPage = "favorites";
     const skip =
-      parseInt(req.query.skip || "0") <= 0 ? 0 : parseInt(req.query.skip);
+      parseInt(req.query.skip || "0", 10) <= 0
+        ? 0
+        : parseInt(req.query.skip, 10);
     const limit = req.query.limit || 4;
     console.log(currentPage);
     try {
@@ -142,11 +147,6 @@ module.exports = {
         cloudinaryId: result.public_id,
         description: req.body.description,
         ingredients: req.body.ingredients,
-        // Object.keys(req.body.ingredients).reduce((acc, key) => {
-        //   const trimmedValue = req.body.ingredients[key].trim();
-        //   acc[key] = trimmedValue;
-        //   return acc;
-        // }, {}),
         directions: req.body.directions,
         likes: 0,
         user: req.user.id,

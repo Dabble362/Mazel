@@ -4,17 +4,17 @@ function animatePlaceholder() {
   if (searchBar) {
     let index = 0;
     const sentence = "What are you looking for?";
-    const time = 120;
+    const msDelayBetweenLetters = 120;
 
     const interval = setInterval(() => {
       searchBar.placeholder = sentence.substring(0, index);
 
       index++;
-    }, time);
+    }, msDelayBetweenLetters);
 
-    setTimeout(() => {
+    setmsDelayBetweenLettersout(() => {
       clearInterval(interval);
-    }, time * (sentence.length + 1));
+    }, msDelayBetweenLetters * (sentence.length + 1));
   }
 }
 

@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let stepsCount = 2;
 
   addStepsButton.addEventListener("click", () => {
-    console.log("The add ingredient button has been clicked!");
+    console.log("The add step button has been clicked!");
     const textArea = document.createElement("textarea");
     textArea.type = "text";
     textArea.name = `directions[]`;
