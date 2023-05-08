@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const Recipe = require("../models/Recipe");
 const Favorite = require("../models/Favorite");
 const Comment = require("../models/Comments");
-const { response } = require("express");
 
 module.exports = {
   getProfile: async (req, res) => {
