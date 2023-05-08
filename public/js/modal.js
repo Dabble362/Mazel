@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ingredientCount++;
   });
 
-  const addStepsButton = document.querySelector("#add-steps-btn");
+  const addStepButton = document.querySelector("#add-steps-btn");
   const directionsForm = document.querySelector("#directions-form");
   let stepsCount = 2;
 
-  addStepsButton.addEventListener("click", () => {
+  addStepButton.addEventListener("click", () => {
     console.log("The add step button has been clicked!");
     const textArea = document.createElement("textarea");
     textArea.type = "text";
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "text-dark-slate-gray",
       "my-2"
     );
-    directionsForm.insertBefore(textArea, addStepsButton);
+    directionsForm.insertBefore(textArea, addStepButton);
     stepsCount++;
   });
 });
