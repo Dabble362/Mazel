@@ -1,11 +1,13 @@
 <%- include('partials/header') -%>
-<div class="">
+<%- include('partials/navbar') %>
+<div class="">  
 
   <div class="flex flex-col w-3/4 mx-auto items-center">
     <!-- recipe name, image, and options-->
     <div class="flex flex-col">
-      <h2 class="my-8 text-7xl font-bold text-dark-slate-gray"><%= recipe.name %></h2><!-- by user name at a later time-->
-      <img class="img-fluid" src="<%= recipe.image%>" />
+      <h2 class="my-8 text-7xl font-bold text-dark-slate-gray"><%= recipe.name %></h2>
+      <p class="font-bold text-dark-slate-gray">By <%= recipe.userName %></p>
+      <img class="img-fluid object-center object-cover" src="<%= recipe.image%>" />
       <div class="flex mx-auto flex-row w-11/12 py-2 px-2 my-2 bg-pale-spring-bud">
         <!-- Like a recipe button -->
         <form
@@ -37,15 +39,43 @@
         <%}%>
       </div>
     </div>
+
+    <!-- recipe description -->
+      <% if(recipe.description) { %>
+      <div class="flex flex-col w-9/12">
+
+        <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Description</h3>
+        <p class="text-dark-slate-gray text-lg" ><%=recipe.description%> </p>
+
+      </div>
+      <%}%>
     <!-- recipe ingredients -->
     <div class="flex flex-col w-9/12">
       <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Ingredients</h3>
-      <p class="text-dark-slate-gray text-lg"><%= recipe.ingredients %></p>
+      
+      <% if(Array.isArray(recipe.ingredients)) { %>
+        <ul class="text-dark-slate-gray text-lg list-disc">
+          <% for(let i = 0; i < recipe.ingredients.length; i++) { %>
+            <li class="text-dark-slate-gray text-lg py-3"><%=recipe.ingredients[i]%></li>
+          <%}%>
+        </ul>
+      <% } else { %>
+        <p class="text-dark-slate-gray text-lg" ><%=recipe.ingredients%> </p>
+      <% } %>
+      
     </div>
     <!-- recipe directions -->
     <div class="flex flex-col w-9/12">
-      <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Instructions</h3>
-      <p class="text-dark-slate-gray text-lg"><%= recipe.directions %></p>
+      <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Directions</h3>
+      <% if(Array.isArray(recipe.directions)) { %>
+        <ul class="text-dark-slate-gray text-lg list-decimal">
+          <% for(let i = 0; i < recipe.directions.length; i++) { %>
+            <li class="text-dark-slate-gray text-lg py-3"><%=recipe.directions[i]%></li>
+          <%}%>
+        </ul>
+      <% } else { %>
+        <p class="text-dark-slate-gray text-lg" ><%=recipe.directions%> </p>
+      <% } %>
     </div>
     <!-- recipe comments -->
     <div class="flex flex-col w-9/12">
@@ -67,12 +97,8 @@
       </form>
     </div>
   </div>
-    <!--  -->
-    <div class="">
-      <a class="btn btn-outline btn-success" href="/profile">Return to Profile</a>
-      <a class="btn btn-outline btn-success" href="/feed">Return to Feed</a>
-    </div>
   </div>
 </div>
-
+<%- include('partials/modal') %>
 <%- include('partials/footer') -%>
+

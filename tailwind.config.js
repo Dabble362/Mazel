@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./views/*.ejs", "./views/partials/*.ejs"],
   theme: {
@@ -8,11 +11,15 @@ module.exports = {
       md: "800px",
       lg: "1024px",
       xl: "1500px",
+      xxl: "2400px",
     },
     maxWidth: {
       eighty: "80%",
     },
     extend: {
+      fontFamily: {
+        sans: ["Outfit", ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         "key-lime": "#EDEF8A",
         "forest-green": "#073D00",
@@ -23,9 +30,7 @@ module.exports = {
         "max-yel-green": "#DEEf57",
       },
       backgroundImage: {
-        "xl-background": "url('../imgs/pexels-elle-hughes-1660030.jpg')",
-        "sm-background": "url('../imgs/pexels-elle-hughes-sm.jpg')",
-        "lg-background": "url('../imgs/pexels-elle-hughes-lg.jpg')",
+        "veggie-top": "url('../imgs/veggietoplong.jpg')",
       },
       backdropBlur: {
         xs: "1px",

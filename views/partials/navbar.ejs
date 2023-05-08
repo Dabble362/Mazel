@@ -1,0 +1,130 @@
+<html>
+  <body>
+    <div
+      class="flex flex-col bg-white rounded md:px-12 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black"
+    >
+      <div class="navbar flex-wrap md:flex-nowrap bg-white">
+        <div class="md:navbar-start">
+          <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 stroke-[#073D00]"
+                fill="forest-green"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="4"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
+            </label>
+            <ul
+              tabindex="0"
+              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <label
+                  for="my-modal-6"
+                  class="btn btn-outline btn-success flex-1"
+                  >Create Recipe</label
+                >
+              </li>
+              <% if(currentPage === 'favorites') { %>
+
+              <li>
+                <a href="/profile" class="btn btn-outline btn-success flex-1"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a href="/feed" class="btn btn-outline btn-success flex-1"
+                  >Feed</a
+                >
+              </li>
+
+              <% } else if(currentPage === 'feed') { %>
+
+              <li>
+                <a href="/profile" class="btn btn-outline btn-success flex-1"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a href="/favorites" class="btn btn-outline btn-success flex-1"
+                  >Favorites</a
+                >
+              </li>
+
+              <% } else if(currentPage === 'recipe') { %>
+
+              <li>
+                <a href="/profile" class="btn btn-outline btn-success flex-1"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a href="/favorites" class="btn btn-outline btn-success flex-1"
+                  >Favorites</a
+                >
+              </li>
+              <li>
+                <a href="/feed" class="btn btn-outline btn-success flex-1"
+                  >Feed</a
+                >
+              </li>
+
+              <% } else if(currentPage === 'profile') { %>
+
+              <li>
+                <a href="/favorites" class="btn btn-outline btn-success flex-1"
+                  >Favorites</a
+                >
+              </li>
+              <li>
+                <a href="/feed" class="btn btn-outline btn-success flex-1"
+                  >Feed</a
+                >
+              </li>
+
+              <% } %>
+
+              <li>
+                <a
+                  href="/logout"
+                  class="flex-1 btn btn-outline btn-success w-full"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar-center">
+          <a class="btn btn-ghost normal-case text-xl">
+            <p class="font-bold text-dark-slate-gray">
+              <strong>Shalom</strong>
+              <%= user.userName %>!
+            </p>
+          </a>
+        </div>
+        <div class="md:navbar-end">
+          <form method="POST" name="" action="/recipe/searchRecipes">
+            <div
+              class="form-control w-[250px] shadow-solid-black rounded border-2 border-black"
+            >
+              <input
+                type="text"
+                id="searchBar"
+                class="input input-bordered"
+                name="searchQuery"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

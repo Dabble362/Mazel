@@ -1,146 +1,66 @@
-<%- include('partials/header') -%>
-  <div class="flex flex-col bg-white/50 w-5/6 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
-    <div class="navbar mt-7 flex-wrap md:flex-nowrap bg-gradient-to-r from-base-100">
-      <div class="md:navbar-start">
-        <div class="dropdown">
-          <label tabindex="0" class="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-[#073D00]" fill="forest-green"
-              viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-            </svg>
-          </label>
-          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <!-- ||Modal Create Recipe START >>>>>>> -->
-              <!-- <<<<<<< END Modal Create Recipe ||  -->
-              <label for="my-modal-6" class="btn">Create Recipe</label>
-
-              <!-- <<<<<<< END Modal Create Recipe ||  -->
-            </li>
-            <li> <a href="/favorites" class=" flex-1 btn btn-outline btn-success">Go to Favorites</a></li>
-            <li> <a class="btn btn-outline btn-success flex-1" href="/feed">Return to Feed</a></li>
-            <li> <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="navbar-center">
-        <a class="btn btn-ghost normal-case text-xl">
-          <p class="font-bold text-dark-slate-gray"><strong><em>Shalom</strong>
-            <%= user.userName %>!</em>
-          </p>
-        </a>
-      </div>
-      <div class=" md:navbar-end">
-        <form method="POST" name="" action="/recipe/searchRecipes">
-          <div class="form-control w-[250px]">
-            <input type="text" id="searchBar" class="input input-bordered" />
-          </div>
-        </form>
+<%- include('partials/header') -%> <%- include('partials/navbar') -%>
+<div class="flex flex-row justify-between">
+  <div
+    class="flex flex-col md:px-16 md:pb-16 sm:w-11/12 lg:w-4/6 bg-white/50 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50"
+  >
+    <div class="flex">
+      <h2
+        class="my-4 pb-2 text-4xl w-full font-bold text-dark-slate-gray bg-gradient-to-r from-base-100 border-b-4 border-forest-green"
+      >
+        My Recipes
+      </h2>
+    </div>
+    <!--///////////////////////////////// RECIPE CARD START /////////////////////////////////-->
+    <% if(recipes.length === 0) { %>
+    <div class="flex h-screen justify-center">
+      <p
+        class="text-center p-[8%] w-3/4 h-[300px] text-dark-slate-gray text-1xl font-bold bg-white/50"
+      >
+        We know the best recipes come from the heart, and we can't wait to see
+        what you've got cooking! Start by adding your favorite recipe and let's
+        create some culinary magic together
+      </p>
+      <div>
+        <% } else { %> <%- include('partials/recipeCard') -%> <% } %>
+        <!--///////////////////////////////// RECIPE CARD END /////////////////////////////////-->
       </div>
     </div>
-  </div>
-  <div class="flex flex-row justify-between ">
-    <div class="flex flex-col w-5/6  bg-white/50 mx-auto px-2 shadow-xl shadow-max-yel-green-500/50">
-      <div class="flex">
-        <h2 class="my-4 pb-2 text-4xl w-full font-bold text-dark-slate-gray bg-gradient-to-r from-base-100 border-b-4 border-forest-green">My Recipes</h2>
-      </div>
-
-      <ul
-        class="flex flex-col md:flex-none md:grid lg:gap-4 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-4 lg:grid-rows-3">
-        <% for(var i=0; i<recipes.length; i++) {%>
-          <li>
-            <div class="card lg:card-side bg-base-100 shadow-xl">
-              <figure class="w-[50%]">
-                <img class="w-fit h-[200px]" src="<%= recipes[i].image%>" alt="#" />
-              </figure>
-              <div class="card-body w-[50%]">
-                <a href="/recipe/<%= recipes[i]._id%>">
-                  <h2 class="card-title">
-                    <%= recipes[i].name %>
-                  </h2>
-                  <p>The description will go here</p>
-                  <div class="card-actions justify-end">
-                    <button class="btn btn-outline btn-success">Discover</button>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </li>
-          <% } %>
-      </ul>
-
-      <!-- <ul class="flex flex-wrap flex-row">
-        <% for(var i=0; i<recipes.length; i++) {%>
-          <li class="justify-between p-4 flex-1 card bg-pale-spring-bud shadow-xl">
-            <div class="card-body">
-              <a href="/recipe/<%= recipes[i]._id%>">
-                <h2 class="text-caput-mortuum font-bold text-2xl card-title">
-                  <%= recipes[i].name %>
-                </h2>
-                <figure><img class="inline" src="<%= recipes[i].image%>"></figure>
-                <p class="text-dark-slate-gray text-2xl">
-                  <%= recipes[i].ingredients %>
-                </p>
-                <p class="text-dark-slate-gray text-2xl">
-                  <%= recipes[i].directions %>
-                </p>
-              </a>
-            </div>
-          </li>
-          <% } %>
-        </ul> -->
+    <!-- Put this part before </body> tag MODAL CREATE RECIPE CONTENT-->
+    <%- include('partials/modal') %> <%- include('partials/footer') -%>
+    <div
+      class="flex flex-row justify-around bg-white rounded py-2 md:px-12 my-4 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black"
+    >
+      <a
+        href="/profile?skip=<%=skip-6 %> "
+        class="rounded-full border-black border-2 lg:max-xl:bg-[#b57bff]"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="h-12 w-12 stroke-[#073D00]"
+          stroke="currentColor"
+          fill="forest-green"
+        >
+          <path
+            d="M14 17a1 1 0 0 1-.707-.293l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 1 1 1.414 1.414L11.414 12l3.293 3.293A1 1 0 0 1 14 17z"
+            style="fill: #ff8e31"
+          /></svg
+      ></a>
+      <a
+        href="/profile?skip=<%=skip+6 > userRecipeCount ? skip : skip+6 %>"
+        class="rounded-full border-black border-2 lg:max-xl:bg-[#b57bff]"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="h-12 w-12 stroke-[#073D00]"
+          stroke="currentColor"
+          fill="forest-green"
+        >
+          <path
+            d="m14.707 12.707-4 4a1 1 0 0 1-1.414-1.414L12.586 12 9.293 8.707a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414z"
+            style="fill: #ff8e31"
+          /></svg
+      ></a>
     </div>
   </div>
-  <!-- Put this part before </body> tag MODAL CREATE RECIPE CONTENT-->
-  <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-  <div class="modal modal-bottom sm:modal-middle bg-pale-spring-bud">
-    <div class="modal-box">
-      <!--form start-->
-      <div class="flex justify-end">
-        <div class="py-2 px-2 my-2 bg-pale-spring-bud w-full mx-auto flex-3">
-          <h2 class="text-caput-mortuum font-bold text-2xl">Have a recipe to share?</h2>
-          <!-- Create Recipe-->
-          <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
-            <div class="form-control w-full max-w-xs">
-              <label for="name" class="label">
-                <span class="label-text text-lg font-bold text-dark-slate-gray">Recipe name</span>
-              </label>
-              <input type="text" id="name" name="name" placeholder="recipe name"
-                class="input input-bordered w-full max-w-xs bg-white placeholder-zinc-700" />
-            </div>
-            <div class="form-control">
-              <label for="ingredients" class="label">
-                <span class="label-text text-lg font-bold text-dark-slate-gray">Ingredients</span>
-              </label>
-              <textarea id="ingredients" name="ingredients"
-                class="textarea textarea-bordered h-24 bg-white placeholder-zinc-700"
-                placeholder="Ingredients"></textarea>
-            </div>
-            <div class="form-control">
-              <label for="directions" class="form-label">
-                <span class="label-text text-lg font-bold text-dark-slate-gray">Directions</span>
-              </label>
-              <textarea class="textarea textarea-bordered h-24 bg-white" id="directions" name="directions"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="imgUpload" class="form-label text-lg font-bold text-dark-slate-gray">Image</label>
-              <input type="file" id="imageUpload" name="file" class="form-control
-            file:mr-4 
-            file:py-2 
-            file:px-4
-            file:rounded-full file:border-0
-            file:text-sm file:font-bold
-            file:bg-violet-50 file:text-forest-green
-            hover:file:bg-success-green hover:file:text-dark-slate-gray">
-            </div>
-            <button type="submit" class="btn btn-outline btn-success" value="Upload">Add A Recipe</button>
-          </form>
-        </div>
-      </div>
-      <!--form end-->
-      <div class="modal-action">
-      <label for="my-modal-6" class="btn">Close</label>
-      </div>
-    </div>
-  </div>
-  <%- include('partials/footer') -%>
+</div>
