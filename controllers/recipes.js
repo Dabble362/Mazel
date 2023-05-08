@@ -188,7 +188,12 @@ module.exports = {
   searchRecipe: async (req, res) => {
     console.log("🔎 The search button is working.");
     try {
-      const userEnteredSearchTerm = "test"; // Hardcoded for now
+      const userEnteredSearchTerm = req.body.searchQuery.trim();
+      if (!userEnteredSearchTerm) {
+        console.log(`Empty search query.`);
+        res.redirect("/");
+        return;
+      }
       const searchParams = [
         {
           $search: {
@@ -207,6 +212,7 @@ module.exports = {
             name: 1,
             image: 1,
             user: 1,
+            description: 1,
           },
         },
       ];
