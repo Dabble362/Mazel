@@ -133,16 +133,12 @@ module.exports = {
       const result = await cloudinary.uploader
         .upload(req.file.path, { width: 600, height: 600, crop: "fill" })
         .then((response) => {
-          console.log(response);
+          console.log("Cloudinary response: ", response);
           return response;
         });
-      console.log(req.body);
-      console.log(typeof req.body.description);
-      console.log(Object.entries(req.body.description));
-      console.log(typeof req.body.ingredients);
-      console.log(Object.entries(req.body.ingredients));
-      console.log(typeof req.body.directions);
-      console.log(Object.entries(req.body.directions));
+      console.log("Description: ", req.body.description);
+      console.log("Ingredients: ", req.body.ingredients);
+      console.log("Directions: ", req.body.directions);
       await Recipe.create({
         name: req.body.name,
         image: result.secure_url,
