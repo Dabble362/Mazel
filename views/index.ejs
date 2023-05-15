@@ -3,24 +3,14 @@
   <div class="flex">
     <section class="xl:flex-1 sm:max-lg:hidden"></section>
     <section class="flex flex-1 justify-center items-center h-screen">
-      <div class="bg-white flex flex-col p-14 md:shadow-solid-primary md:border-2 md:border-black md:py-6 md:px-4">
-        <h1 class="my-8 text-8xl font-bold text-dark-slate-gray lg:backdrop-blur-xs">
+      <div
+        class="bg-white flex flex-col p-14 md:shadow-solid-primary md:border-2 md:border-black md:py-6 md:px-4 md:max-w-[500px]">
+        <h1 class="mt-8 mb-2 text-8xl font-bold text-dark-slate-gray lg:backdrop-blur-xs">
           Mazel
         </h1>
-        <figcaption class="mb-2 text-dark-slate-gray text-lg font-semibold backdrop-blur-xs">
+        <figcaption class="mb-2 text-dark-slate-gray text-2xl font-semibold backdrop-blur-xs pb-8">
           A place to find, talk about, and save the recipes you love.
         </figcaption>
-        <form method="GET" name="" action="/recipe/searchRecipes" class="flex items-end mb-5">
-          <div class="form-control w-9/12 max-w-xs">
-            <input type="text"
-              class="bg-white placeholder:text-slate-600 text-slate-600 input input-bordered w-full max-w-xs"
-              id="searchBar" />
-          </div>
-          <button class="text-key-lime btn rounded-r-lg w-5 bg-forest-green border-none hover:bg-yellow-400"
-            type="submit" id="searchButton">
-            GO
-          </button>
-        </form>
         <div>
           <a class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]" href="/login">
             Login</a>
