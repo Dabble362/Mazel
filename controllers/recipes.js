@@ -132,7 +132,10 @@ module.exports = {
       // Upload image to cloudinary
       const result = await cloudinary.uploader
         .upload(req.file.path, { width: 600, height: 600, crop: "fill" })
-        .then((result) => console.log(result));
+        .then((response) => {
+          console.log(response);
+          return response;
+        });
       console.log(req.body);
       console.log(typeof req.body.description);
       console.log(Object.entries(req.body.description));
