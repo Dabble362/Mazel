@@ -8,7 +8,7 @@
             My Recipes
           </h2>
         </div>
-        <!--///////////////////////////////// RECIPE CARD START /////////////////////////////////-->
+
         <% if(recipes.length===0) { %>
           <div class="flex h-screen justify-center">
             <p class="text-center p-[8%] w-3/4 h-[300px] text-dark-slate-gray text-1xl font-bold bg-white/50">
@@ -19,10 +19,9 @@
             <div>
               <% } else { %> <%- include('partials/recipeCard') -%>
                   <% } %>
-                    <!--///////////////////////////////// RECIPE CARD END /////////////////////////////////-->
             </div>
           </div>
-          <!-- Put this part before </body> tag MODAL CREATE RECIPE CONTENT-->
+
           <%- include('partials/createRecipeModal') %>
             <div
               class="flex flex-row justify-around bg-white rounded py-2 md:px-12 my-4 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black">

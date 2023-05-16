@@ -8,7 +8,7 @@
             My Feed
           </h2>
         </div>
-        <% if(totalRecipes.length === 0) { %>
+        <% if(totalRecipes.length===0) { %>
           <div class="flex h-screen justify-center">
             <p class="text-center p-[8%] w-3/4 h-[300px] text-dark-slate-gray text-1xl font-bold bg-white/50">
               THIS IS PLACEHOLDER TEXT FOR WHEN THERE ARE NO RECIPES IN THE FEED.
@@ -16,7 +16,6 @@
             <div>
               <% } else { %> <%- include('partials/recipeCard') -%>
                   <% } %>
-                    <!--///////////////////////////////// RECIPE CARD END /////////////////////////////////-->
             </div>
           </div>
           <div
