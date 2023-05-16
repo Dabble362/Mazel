@@ -13,14 +13,14 @@ module.exports = {
     try {
       const totalFavorites = await Favorite.find({ user: req.user.id })
         .countDocuments();
-      const recipes = await Favorite.find({ user: req.user.id })
+      const favoriteRecipes = await Favorite.find({ user: req.user.id })
         .populate("recipe")
         .skip(skip)
         .limit(limit);
 
       //Sending post data from mongodb and user data to ejs template
       res.render("favorites.ejs", {
-        recipes: recipes,
+        favoriteRecipes: favoriteRecipes,
         totalFavorites: totalFavorites,
         skip: skip,
         limit: limit,
