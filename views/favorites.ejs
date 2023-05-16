@@ -8,45 +8,35 @@
             class="my-4 pb-2 text-4xl w-full font-bold text-dark-slate-gray bg-gradient-to-r from-base-100 border-b-4 border-forest-green">
             My Favorites</h2>
         </div>
-        <% if(recipes.length===0) { %>
+        <% if(favoriteRecipes.length===0) { %>
           <div class="flex h-screen justify-center">
             <p class="text-center p-[8%] w-3/4 h-[300px] text-dark-slate-gray text-1xl font-bold bg-white/50">
               Oops, it looks like your recipe collection is empty! Time to start finding your faves - browse the feed
               for some recipes and click the heart to add them!
             </p>
             <div>
-              <% } else { %>
-                <ul class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  <% for(var i=0; i<recipes.length; i++) {%>
-                    <li>
-                      <a href="/recipe/<%= recipes[i].recipe._id%>" class="max-h-[450px] card h-max-[475px] bg-base-100 shadow-solid-primary
-          border-2 border-black py-6 px-4">
-                        <figure class="flex-1 overflow-hidden border-2 border-black shadow-solid-black">
-                          <img class="object-center object-cover " src="<%= recipes[i].recipe.image%>" alt="#" />
-                        </figure>
-                        <div class="card-body">
-
-                          <h2 class="card-title text-dark-slate-gray">
-                            <%= recipes[i].recipe.name %>
-                          </h2>
-                          <p class="max-h-20 text-dark-slate-gray text-ellipsis overflow-hidden">
-                            <%= recipes[i].recipe.description %>
-                          </p>
-
-                        </div>
-                      </a>
-                    </li>
-                    <% } %>
-                </ul>
-                <% } %>
+              <% } else { %> <%- include('partials/favoriteRecipeCard') -%>
+                  <% } %>
             </div>
           </div>
           <div
-            class="flex flex-col md:flex-row justify-center bg-white rounded md:py-2 md:px-12 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black">
-            <a class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]"
-              href="/favorites?skip=<%=skip-6 %> ">Previous</a>
-            <a class="btn btn-outline btn-success lg:max-xl:bg-[#B5CFC8]"
-              href="/favorites?skip=<%=skip+6 > totalFavorites ? skip : skip+6 %>">Next</a>
+            class="flex flex-row justify-around bg-white rounded py-2 md:px-12 my-4 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black">
+            <a href="/favorites?skip=<%=skip-6 %> " class="rounded-full border-black border-2 lg:max-xl:bg-[#b57bff]">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-12 w-12 stroke-[#073D00]"
+                stroke="currentColor" fill="forest-green">
+                <path
+                  d="M14 17a1 1 0 0 1-.707-.293l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 1 1 1.414 1.414L11.414 12l3.293 3.293A1 1 0 0 1 14 17z"
+                  style="fill: #ff8e31" />
+              </svg>
+            </a>
+            <a href="/favorites?skip=<%=skip+6 > totalFavorites ? skip : skip+6 %>"
+              class="rounded-full border-black border-2 lg:max-xl:bg-[#b57bff]">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-12 w-12 stroke-[#073D00]"
+                stroke="currentColor" fill="forest-green">
+                <path
+                  d="m14.707 12.707-4 4a1 1 0 0 1-1.414-1.414L12.586 12 9.293 8.707a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414z"
+                  style="fill: #ff8e31" />
+              </svg>
+            </a>
           </div>
           <%- include('partials/createRecipeModal') %>
-            <%- include('partials/footer') -%>
