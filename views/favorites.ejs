@@ -11,34 +11,11 @@
         <% if(recipes.length===0) { %>
           <div class="flex h-screen justify-center">
             <p class="text-center p-[8%] w-3/4 h-[300px] text-dark-slate-gray text-1xl font-bold bg-white/50">
-              Oops, it looks like your recipe collection is empty! Time to start finding your faves - browse the feed
-              for some recipes and click the heart to add them!
+              THIS IS PLACEHOLDER TEXT FOR WHEN THERE ARE NO FAVORITE RECIPES.
             </p>
             <div>
-              <% } else { %>
-                <ul class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  <% for(var i=0; i<recipes.length; i++) {%>
-                    <li>
-                      <a href="/recipe/<%= recipes[i].recipe._id%>" class="max-h-[450px] card h-max-[475px] bg-base-100 shadow-solid-primary
-          border-2 border-black py-6 px-4">
-                        <figure class="flex-1 overflow-hidden border-2 border-black shadow-solid-black">
-                          <img class="object-center object-cover " src="<%= recipes[i].recipe.image%>" alt="#" />
-                        </figure>
-                        <div class="card-body">
-
-                          <h2 class="card-title text-dark-slate-gray">
-                            <%= recipes[i].recipe.name %>
-                          </h2>
-                          <p class="max-h-20 text-dark-slate-gray text-ellipsis overflow-hidden">
-                            <%= recipes[i].recipe.description %>
-                          </p>
-
-                        </div>
-                      </a>
-                    </li>
-                    <% } %>
-                </ul>
-                <% } %>
+              <% } else { %> <%- include('partials/favoriteRecipeCard') -%>
+                  <% } %>
             </div>
           </div>
           <div
