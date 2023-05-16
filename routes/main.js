@@ -3,12 +3,13 @@ const router = express.Router();
 const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
 const recipesController = require("../controllers/recipes");
+const favoritesController = require('../controllers/favorites');
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Main Routes
 router.get("/", homeController.getIndex);
 router.get("/profile", ensureAuth, recipesController.getProfile);
-router.get("/favorites", ensureAuth, recipesController.getFavorites);
+router.get("/favorites", ensureAuth, favoritesController.getFavorites);
 
 //feed route
 router.get("/feed", ensureAuth, recipesController.getFeed);
