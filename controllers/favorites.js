@@ -8,7 +8,7 @@ module.exports = {
       parseInt(req.query.skip || "0", 10) <= 0
         ? 0
         : parseInt(req.query.skip, 10);
-    const limit = req.query.limit || 4;
+    const limit = req.query.limit || 6;
     console.log(currentPage);
     try {
       const totalFavorites = await Favorite.find({ user: req.user.id })
