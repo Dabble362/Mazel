@@ -11,9 +11,8 @@ module.exports = {
     const limit = req.query.limit || 4;
     console.log(currentPage);
     try {
-      const totalFavorites = await Favorite.find({
-        user: req.user.id,
-      }).countDocuments();
+      const totalFavorites = await Favorite.find({ user: req.user.id })
+        .countDocuments();
       const recipes = await Favorite.find({ user: req.user.id })
         .populate("recipe")
         .skip(skip)
@@ -32,6 +31,4 @@ module.exports = {
       console.log(err);
     }
   }
-
-
 }
