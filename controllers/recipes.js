@@ -155,6 +155,12 @@ module.exports = {
   },
   searchRecipe: async (req, res) => {
     console.log("🔎 The search button is working.");
+    const currentPage = "searchResults";
+    const skip =
+      parseInt(req.query.skip || "0", 10) <= 0
+        ? 0
+        : parseInt(req.query.skip, 10);
+    const limit = req.query.limit || 6;
     try {
       const userEnteredSearchTerm = req.body.searchQuery.trim();
       if (!userEnteredSearchTerm) {
@@ -185,6 +191,9 @@ module.exports = {
         },
       ];
       const searchResults = await Recipe.aggregate(searchParams);
+      const totalRecipes = searchResults.length;
+      console.log(`Total # of queried recipes = ${totalRecipes}`)
+
       console.log(
         "✅ You have successfully performed a search (i.e. calling Recipe.aggregate did not blow up)."
       );
@@ -192,6 +201,15 @@ module.exports = {
       console.log(JSON.stringify(searchParams, null, 2)); // From https://stackoverflow.com/a/10729391
       console.log("🎁 ...and your search results are:");
       console.log(searchResults);
+      res.render("searchResults.ejs", {
+        user: req.user,
+        userEnteredSearchTerm: userEnteredSearchTerm,
+        searchResults: searchResults,
+        skip: skip,
+        limit: limit,
+        totalRecipes: totalRecipes,
+        currentPage: currentPage,
+      })
     } catch (err) {
       console.log("Error encountered while searching for recipes");
       console.log(err);
