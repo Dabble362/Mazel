@@ -25,8 +25,7 @@
             </form>
             <!-- Delete recipe button-->
             <%if(recipe.user==user.id){ %>
-              <form action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE" method="POST"
-                class="flex justify-end flex-1">
+              <form action="/recipe/deleteRecipe/<%= recipe.id %>" method="POST" class="flex justify-end flex-1">
                 <button class="btn btn-outline btn-success fa fa-trash" type="submit"></button>
               </form>
               <%}%>
