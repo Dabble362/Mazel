@@ -199,20 +199,22 @@ module.exports = {
     }
   },
   deleteRecipe: async (req, res) => {
-    console.log('you clicked the trashcan')
+    console.log('deleteRecipe was invoked')
     try {
-      console.log('attempting to delete recipe')
-      // Find post by id
-      let recipe = await Recipe.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      await cloudinary.uploader.destroy(recipe.cloudinaryId);
-      // Delete post from db
-      await recipe.remove({ _id: req.params.id });
-      console.log("Deleted Recipe");
+      const recipeDbId = req.params.id;
+      console.log("   Finding recipe id: ", recipeDbId);
+      const recipe = await Recipe.findById({ _id: recipeDbId });
+      const recipeCloudinaryId = recipe.cloudinaryId;
+      console.log("   Found CloudinaryID on recipe: ", recipeCloudinaryId);
+      await cloudinary.uploader.destroy(recipeCloudinaryId);
+      console.log("   Deleted CloudinaryID image: ", recipeCloudinaryId);
+      await recipe.remove({ _id: recipeDbId });
+      console.log("   Deleted recipe ID from db: ", recipeDbId);
+      console.log("✅ deleteRecipe has completed successfully");
       res.redirect("/profile");
     } catch (err) {
+      console.log("An error has occurred while attempting to delete a recipe.");
       console.log(err);
-      console.log("an error has occurred");
       res.redirect("/profile");
     }
   },
