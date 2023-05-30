@@ -203,6 +203,15 @@ module.exports = {
     try {
       const recipeDbId = req.params.id;
       console.log("   Finding recipe id: ", recipeDbId);
+      const favoritedRecipes = await Favorite.find({ recipe: recipeDbId });
+      console.log("   Checking if favorited:", favoritedRecipes);
+      if (favoritedRecipes.length === 0) {
+        // The recipe does not exist in the favorites collection
+        console.log("   Recipe is not favorited");
+      } else {
+        // The recipe exists in the favorites collection
+        console.log("   Recipe is favorited", favoritedRecipes);
+      }
       const recipe = await Recipe.findById({ _id: recipeDbId });
       const recipeCloudinaryId = recipe.cloudinaryId;
       console.log("   Found CloudinaryID on recipe: ", recipeCloudinaryId);
