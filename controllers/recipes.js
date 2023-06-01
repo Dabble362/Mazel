@@ -199,10 +199,23 @@ module.exports = {
     }
   },
   deleteRecipe: async (req, res) => {
-    console.log('deleteRecipe was invoked')
+    console.log('   deleteRecipe was invoked')
     try {
       const recipeDbId = req.params.id;
       console.log("   Finding recipe id: ", recipeDbId);
+      const favoritedRecipes = await Favorite.find({ recipe: recipeDbId });
+      console.log("   Checking if favorited:", favoritedRecipes);
+      if (favoritedRecipes.length === 0) {
+        // The recipe does not exist in the favorites collection
+        console.log("   Recipe is not favorited");
+      } else {
+        // The recipe exists in the favorites collection
+        console.log("   Recipe is favorited", `   Here are the Favorite Documents: ${favoritedRecipes}`);
+        for (const favorite of favoritedRecipes) {
+          console.log(`  Attempting to remove favorite document ${favorite._id}`);
+          await Favorite.deleteOne({ _id: favorite._id });
+        }
+      }
       const recipe = await Recipe.findById({ _id: recipeDbId });
       const recipeCloudinaryId = recipe.cloudinaryId;
       console.log("   Found CloudinaryID on recipe: ", recipeCloudinaryId);
@@ -210,10 +223,10 @@ module.exports = {
       console.log("   Deleted CloudinaryID image: ", recipeCloudinaryId);
       await recipe.remove({ _id: recipeDbId });
       console.log("   Deleted recipe ID from db: ", recipeDbId);
-      console.log("✅ deleteRecipe has completed successfully");
+      console.log("   ✅ deleteRecipe has completed successfully");
       res.redirect("/profile");
     } catch (err) {
-      console.log("An error has occurred while attempting to delete a recipe.");
+      console.log("   An error has occurred while attempting to delete a recipe.");
       console.log(err);
       res.redirect("/profile");
     }
