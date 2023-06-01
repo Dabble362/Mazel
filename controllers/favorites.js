@@ -18,7 +18,7 @@ module.exports = {
         .skip(skip)
         .limit(limit);
       console.log(`   The contents of favoriteRecipes`);
-      favoriteRecipes.forEach(recipe => console.log(recipe));
+      favoriteRecipes.forEach(recipe => { console.log(recipe) });
 
       //Sending post data from mongodb and user data to ejs template
       res.render("favorites.ejs", {
