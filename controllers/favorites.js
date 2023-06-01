@@ -17,7 +17,6 @@ module.exports = {
         .populate("recipe")
         .skip(skip)
         .limit(limit);
-      console.log(typeof favoriteRecipes);
       console.log(`   The contents of favoriteRecipes`);
       favoriteRecipes.forEach(recipe => console.log(recipe));
 
