@@ -210,7 +210,7 @@ module.exports = {
         console.log("   Recipe is not favorited");
       } else {
         // The recipe exists in the favorites collection
-        console.log("   Recipe is favorited", `   Here are the ids: ${favoritedRecipes}`);
+        console.log("   Recipe is favorited", `   Here are the Favorite Documents: ${favoritedRecipes}`);
         for (const favorite of favoritedRecipes) {
           console.log(`  Attempting to remove favorite document ${favorite._id}`);
           await Favorite.deleteOne({ _id: favorite._id });
