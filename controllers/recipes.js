@@ -155,6 +155,7 @@ module.exports = {
   },
   searchRecipe: async (req, res) => {
     console.log("🔎 The search button is working.");
+    console.log("Query params:", req.query);
     const currentPage = "searchResults";
     const skip =
       parseInt(req.query.skip || "0", 10) <= 0
@@ -162,7 +163,9 @@ module.exports = {
         : parseInt(req.query.skip, 10);
     const limit = req.query.limit || 6;
     try {
-      const userEnteredSearchTerm = req.body.searchQuery.trim();
+      const userEnteredSearchTerm = req.body.searchQuery
+        ? req.body.searchQuery.trim()
+        : req.query.userEnteredSearchTerm;
       if (!userEnteredSearchTerm) {
         console.log(`Empty search query.`);
         res.redirect("/");

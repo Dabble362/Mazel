@@ -25,7 +25,7 @@
           <% - include('partials/createRecipeModal') %>
             <div
               class="flex flex-row justify-around bg-white rounded py-2 md:px-12 my-4 md:my-2 sm:w-11/12 lg:w-4/6 mx-auto px-2 border-2 border-black shadow-solid-black">
-              <a href="/searchResults?skip=<%=skip-6 %> "
+              <a href="/searchResults?skip=<%=skip-6 %>&userEnteredSearchTerm=<%=userEnteredSearchTerm %>"
                 class="rounded-full border-black border-2 lg:max-xl:bg-[#b57bff]">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-12 w-12 stroke-[#073D00]"
                   stroke="currentColor" fill="forest-green">
@@ -34,7 +34,7 @@
                     style="fill: #ff8e31" />
                 </svg>
               </a>
-              <a href="/searchResults?skip=<%=skip+6 > totalRecipes ? skip : skip+6 %>"
+              <a href="/searchResults?skip=<%=skip+6 > totalRecipes ? skip : skip+6 %>&userEnteredSearchTerm=<%=userEnteredSearchTerm %>"
                 class="rounded-full border-black border-2 lg:max-xl:bg-[#b57bff]">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-12 w-12 stroke-[#073D00]"
                   stroke="currentColor" fill="forest-green">
