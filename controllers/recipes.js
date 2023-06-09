@@ -182,9 +182,6 @@ module.exports = {
           },
         },
         {
-          $limit: 5,
-        },
-        {
           $project: {
             name: 1,
             image: 1,
@@ -193,7 +190,12 @@ module.exports = {
           },
         },
       ];
-      const searchResults = await Recipe.aggregate(searchParams);
+
+      const searchResults = await Recipe.aggregate(searchParams)
+        .sort({ createdAt: "desc" })
+        .skip(skip)
+        .limit(limit);
+
       const totalRecipes = searchResults.length;
       console.log(`Total # of queried recipes = ${totalRecipes}`)
 
