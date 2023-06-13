@@ -4,14 +4,14 @@ const Recipe = require("../models/Recipe");
 const Favorite = require("../models/Favorite");
 const Comment = require("../models/Comments");
 
+const MaxNumOfDisplayedRecipes = 6;
+const NextSkipValue = (currentSkipValue) => {
+  return Math.max(0, parseInt(currentSkipValue || "0", 10));
+}
+
 module.exports = {
   getProfile: async (req, res) => {
     const currentPage = "profile";
-    const skip =
-      parseInt(req.query.skip || "0", 10) <= 0
-        ? 0
-        : parseInt(req.query.skip, 10);
-    const limit = req.query.limit || 6;
     console.log(currentPage);
     console.log("getProfile was invoked");
     try {
@@ -23,8 +23,8 @@ module.exports = {
 
       const dataPipeline = [
         { $match: { user: mongoose.Types.ObjectId(req.user.id) } },
-        { $skip: skip },
-        { $limit: limit },
+        { $skip: NextSkipValue(req.query.skip) },
+        { $limit: MaxNumOfDisplayedRecipes },
       ];
 
       const recipes = await Recipe.aggregate(dataPipeline);
@@ -42,7 +42,7 @@ module.exports = {
       res.render("profile.ejs", {
         recipes: recipes,
         user: req.user,
-        skip,
+        skip: NextSkipValue(req.query.skip),
         userRecipeCount,
         currentPage: currentPage,
       });
@@ -52,24 +52,19 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     const currentPage = "feed";
-    const skip =
-      parseInt(req.query.skip || "0", 10) <= 0
-        ? 0
-        : parseInt(req.query.skip, 10);
-    const limit = req.query.limit || 6;
     console.log(currentPage);
     try {
       const totalRecipes = await Recipe.countDocuments();
       const recipes = await Recipe.find()
         .sort({ createdAt: "desc" })
-        .skip(skip)
-        .limit(limit)
+        .skip(NextSkipValue(req.query.skip))
+        .limit(MaxNumOfDisplayedRecipes)
         .lean();
       res.render("feed.ejs", {
         recipes: recipes,
         user: req.user,
-        skip: skip,
-        limit: limit,
+        skip: NextSkipValue(req.query.skip),
+        limit: MaxNumOfDisplayedRecipes,
         totalRecipes: totalRecipes,
         currentPage: currentPage,
       });
@@ -155,8 +150,12 @@ module.exports = {
   },
   searchRecipe: async (req, res) => {
     console.log("🔎 The search button is working.");
+    console.log("Query params:", req.query);
+    const currentPage = "searchResults";
     try {
-      const userEnteredSearchTerm = req.body.searchQuery.trim();
+      const userEnteredSearchTerm = req.body.searchQuery
+        ? req.body.searchQuery.trim()
+        : req.query.userEnteredSearchTerm;
       if (!userEnteredSearchTerm) {
         console.log(`Empty search query.`);
         res.redirect("/");
@@ -173,9 +172,6 @@ module.exports = {
           },
         },
         {
-          $limit: 5,
-        },
-        {
           $project: {
             name: 1,
             image: 1,
@@ -184,7 +180,15 @@ module.exports = {
           },
         },
       ];
-      const searchResults = await Recipe.aggregate(searchParams);
+
+      const searchResults = await Recipe.aggregate(searchParams)
+        .sort({ createdAt: "desc" })
+        .skip(NextSkipValue(req.query.skip))
+        .limit(MaxNumOfDisplayedRecipes);
+
+      const totalRecipes = searchResults.length;
+      console.log(`Total # of queried recipes = ${totalRecipes}`)
+
       console.log(
         "✅ You have successfully performed a search (i.e. calling Recipe.aggregate did not blow up)."
       );
@@ -192,6 +196,14 @@ module.exports = {
       console.log(JSON.stringify(searchParams, null, 2)); // From https://stackoverflow.com/a/10729391
       console.log("🎁 ...and your search results are:");
       console.log(searchResults);
+      res.render("searchResults.ejs", {
+        user: req.user,
+        userEnteredSearchTerm: userEnteredSearchTerm,
+        recipes: searchResults,
+        skip: NextSkipValue(req.query.skip),
+        limit: MaxNumOfDisplayedRecipes,
+        currentPage: currentPage,
+      })
     } catch (err) {
       console.log("Error encountered while searching for recipes");
       console.log(err);
