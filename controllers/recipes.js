@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const Recipe = require("../models/Recipe");
 const Favorite = require("../models/Favorite");
 const Comment = require("../models/Comments");
+
 const MaxNumOfDisplayedRecipes = 6;
+const NextSkipValue = (req) => {
+  return Math.max(0, parseInt(req.query.skip || "0", 10));
+}
 
 module.exports = {
   getProfile: async (req, res) => {
     const currentPage = "profile";
-    const skip =
-      parseInt(req.query.skip || "0", 10) <= 0
-        ? 0
-        : parseInt(req.query.skip, 10);
     console.log(currentPage);
     console.log("getProfile was invoked");
     try {
@@ -23,7 +23,7 @@ module.exports = {
 
       const dataPipeline = [
         { $match: { user: mongoose.Types.ObjectId(req.user.id) } },
-        { $skip: skip },
+        { $skip: NextSkipValue(req) },
         { $limit: MaxNumOfDisplayedRecipes },
       ];
 
@@ -42,7 +42,7 @@ module.exports = {
       res.render("profile.ejs", {
         recipes: recipes,
         user: req.user,
-        skip,
+        skip: NextSkipValue(req),
         userRecipeCount,
         currentPage: currentPage,
       });
@@ -52,22 +52,18 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     const currentPage = "feed";
-    const skip =
-      parseInt(req.query.skip || "0", 10) <= 0
-        ? 0
-        : parseInt(req.query.skip, 10);
     console.log(currentPage);
     try {
       const totalRecipes = await Recipe.countDocuments();
       const recipes = await Recipe.find()
         .sort({ createdAt: "desc" })
-        .skip(skip)
+        .skip(NextSkipValue(req))
         .limit(MaxNumOfDisplayedRecipes)
         .lean();
       res.render("feed.ejs", {
         recipes: recipes,
         user: req.user,
-        skip: skip,
+        skip: NextSkipValue(req),
         limit: MaxNumOfDisplayedRecipes,
         totalRecipes: totalRecipes,
         currentPage: currentPage,
@@ -156,10 +152,6 @@ module.exports = {
     console.log("🔎 The search button is working.");
     console.log("Query params:", req.query);
     const currentPage = "searchResults";
-    const skip =
-      parseInt(req.query.skip || "0", 10) <= 0
-        ? 0
-        : parseInt(req.query.skip, 10);
     try {
       const userEnteredSearchTerm = req.body.searchQuery
         ? req.body.searchQuery.trim()
@@ -191,7 +183,7 @@ module.exports = {
 
       const searchResults = await Recipe.aggregate(searchParams)
         .sort({ createdAt: "desc" })
-        .skip(skip)
+        .skip(NextSkipValue(req))
         .limit(MaxNumOfDisplayedRecipes);
 
       const totalRecipes = searchResults.length;
@@ -208,7 +200,7 @@ module.exports = {
         user: req.user,
         userEnteredSearchTerm: userEnteredSearchTerm,
         recipes: searchResults,
-        skip: skip,
+        skip: NextSkipValue(req),
         limit: MaxNumOfDisplayedRecipes,
         currentPage: currentPage,
       })
