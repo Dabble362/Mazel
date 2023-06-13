@@ -4,20 +4,21 @@
 
       <div class="flex flex-col w-4/6 mx-auto items-center">
         <!-- recipe name, image, and options-->
-        <section class="flex bg-base-100 shadow-solid-primary
+        <section class="flex flex-col w-full bg-base-100 border-2 rounded border-black shadow-solid-black
         border-2 border-black py-6 px-4 w-3/4 mx-auto items-center">
           <div class="flex flex-col ">
-            <h2 class="my-8 text-4xl font-bold text-dark-slate-gray">
+            <img class="img-fluid bg-base-100 shadow-solid-primary object-center object-cover h-[400px] w-[800px]"
+              src="<%= recipe.image%>" />
+            <h2 class="mt-8 mb-2 text-4xl text-center font-bold text-dark-slate-gray">
               <%= recipe.name %>
             </h2>
-            <p class="font-bold text-dark-slate-gray">By <%= recipe.userName %>
+            <p class="font-bold text-center mb-2 text-dark-slate-gray">By <%= recipe.userName %>
             </p>
-            <img class="img-fluid object-center object-cover" src="<%= recipe.image%>" />
           </div>
 
           <!-- recipe description -->
           <% if(recipe.description) { %>
-            <div class="flex flex-col w-9/12">
+            <div class="flex w-full flex-col">
 
               <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Description</h3>
               <p class="text-dark-slate-gray text-lg">
@@ -26,27 +27,30 @@
 
             </div>
             <%}%>
+              <div class="flex mx-auto flex-row w-full mt-2">
+                <!-- Like a recipe button -->
+                <form class="flex flex-1" action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT" method="POST">
+                  <button class="btn btn-outline border-2 border-black shadow-solid-black btn-success fa fa-heart"
+                    type="submit"></button>
+                  <!-- Display likes -->
+                  <h3 class="my-auto pl-4 text-2xl font-bold text-dark-slate-gray">Likes: <%= recipe.likes %>
+                  </h3>
+                </form>
+                <!-- Favorite a recipe button-->
+                <form class="flex-1" action="/recipe/favoriteRecipe/<%= recipe.id %>" method="POST">
+                  <button class="btn btn-outline btn-success border-2 border-black shadow-solid-black" type="submit">Add
+                    to Favorites</button>
+                </form>
+                <!-- Delete recipe button-->
+                <%if(recipe.user==user.id){ %>
+                  <form action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE" method="POST"
+                    class="flex justify-end flex-1">
+                    <button class="btn btn-outline btn-success fa fa-trash border-2 border-black shadow-solid-black"
+                      type="submit"></button>
+                  </form>
+                  <%}%>
+              </div>
         </section>
-        <div class="flex mx-auto flex-row w-11/12 py-2 px-2 my-2 bg-pale-spring-bud">
-          <!-- Like a recipe button -->
-          <form class="flex flex-1" action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT" method="POST">
-            <button class="btn btn-outline btn-success fa fa-heart" type="submit"></button>
-            <!-- Display likes -->
-            <h3 class="my-auto pl-4 text-2xl font-bold text-dark-slate-gray">Likes: <%= recipe.likes %>
-            </h3>
-          </form>
-          <!-- Favorite a recipe button-->
-          <form class="flex-1" action="/recipe/favoriteRecipe/<%= recipe.id %>" method="POST">
-            <button class="btn btn-outline btn-success" type="submit">Add to Favorites</button>
-          </form>
-          <!-- Delete recipe button-->
-          <%if(recipe.user==user.id){ %>
-            <form action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE" method="POST"
-              class="flex justify-end flex-1">
-              <button class="btn btn-outline btn-success fa fa-trash" type="submit"></button>
-            </form>
-            <%}%>
-        </div>
         <!-- recipe ingredients -->
         <div class="flex flex-col w-9/12">
           <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Ingredients</h3>
