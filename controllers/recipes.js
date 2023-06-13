@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Recipe = require("../models/Recipe");
 const Favorite = require("../models/Favorite");
 const Comment = require("../models/Comments");
+const MaxNumOfDisplayedRecipes = 6;
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -11,7 +12,6 @@ module.exports = {
       parseInt(req.query.skip || "0", 10) <= 0
         ? 0
         : parseInt(req.query.skip, 10);
-    const limit = req.query.limit || 6;
     console.log(currentPage);
     console.log("getProfile was invoked");
     try {
@@ -24,7 +24,7 @@ module.exports = {
       const dataPipeline = [
         { $match: { user: mongoose.Types.ObjectId(req.user.id) } },
         { $skip: skip },
-        { $limit: limit },
+        { $limit: MaxNumOfDisplayedRecipes },
       ];
 
       const recipes = await Recipe.aggregate(dataPipeline);
@@ -56,20 +56,19 @@ module.exports = {
       parseInt(req.query.skip || "0", 10) <= 0
         ? 0
         : parseInt(req.query.skip, 10);
-    const limit = req.query.limit || 6;
     console.log(currentPage);
     try {
       const totalRecipes = await Recipe.countDocuments();
       const recipes = await Recipe.find()
         .sort({ createdAt: "desc" })
         .skip(skip)
-        .limit(limit)
+        .limit(MaxNumOfDisplayedRecipes)
         .lean();
       res.render("feed.ejs", {
         recipes: recipes,
         user: req.user,
         skip: skip,
-        limit: limit,
+        limit: MaxNumOfDisplayedRecipes,
         totalRecipes: totalRecipes,
         currentPage: currentPage,
       });
@@ -161,7 +160,6 @@ module.exports = {
       parseInt(req.query.skip || "0", 10) <= 0
         ? 0
         : parseInt(req.query.skip, 10);
-    const limit = req.query.limit || 6;
     try {
       const userEnteredSearchTerm = req.body.searchQuery
         ? req.body.searchQuery.trim()
@@ -194,7 +192,7 @@ module.exports = {
       const searchResults = await Recipe.aggregate(searchParams)
         .sort({ createdAt: "desc" })
         .skip(skip)
-        .limit(limit);
+        .limit(MaxNumOfDisplayedRecipes);
 
       const totalRecipes = searchResults.length;
       console.log(`Total # of queried recipes = ${totalRecipes}`)
@@ -211,7 +209,7 @@ module.exports = {
         userEnteredSearchTerm: userEnteredSearchTerm,
         recipes: searchResults,
         skip: skip,
-        limit: limit,
+        limit: MaxNumOfDisplayedRecipes,
         currentPage: currentPage,
       })
     } catch (err) {
