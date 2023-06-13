@@ -209,10 +209,9 @@ module.exports = {
       res.render("searchResults.ejs", {
         user: req.user,
         userEnteredSearchTerm: userEnteredSearchTerm,
-        searchResults: searchResults,
+        recipes: searchResults,
         skip: skip,
         limit: limit,
-        totalRecipes: totalRecipes,
         currentPage: currentPage,
       })
     } catch (err) {

@@ -10,14 +10,14 @@
           </h2>
         </div>
 
-        <% if(searchResults.length===0) { %>
+        <% if(recipes.length===0) { %>
           <div class="flex h-screen justify-center">
             <p class="text-center p-[8%] w-3/4 h-[300px] text-dark-slate-gray text-1xl font-bold bg-white/50">
               It looks like there were not any matches found! Add a recipe of your own to fill this gap or try a
               different search.
             </p>
             <div>
-              <% } else { %> <%- include('partials/searchResultsCard') -%>
+              <% } else { %> <%- include('partials/recipeCard') -%>
                   <% } %>
             </div>
           </div>
@@ -34,7 +34,7 @@
                     style="fill: #ff8e31" />
                 </svg>
               </a>
-              <a href="/searchResults?skip=<%=skip+6 > totalRecipes ? skip : skip+6 %>&userEnteredSearchTerm=<%=userEnteredSearchTerm %>"
+              <a href="/searchResults?skip=<%=skip+6 > recipes.length ? skip : skip+6 %>&userEnteredSearchTerm=<%=userEnteredSearchTerm %>"
                 class="rounded-full border-black border-2 lg:max-xl:bg-[#b57bff]">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-12 w-12 stroke-[#073D00]"
                   stroke="currentColor" fill="forest-green">
