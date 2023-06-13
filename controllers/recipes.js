@@ -5,8 +5,8 @@ const Favorite = require("../models/Favorite");
 const Comment = require("../models/Comments");
 
 const MaxNumOfDisplayedRecipes = 6;
-const NextSkipValue = (req) => {
-  return Math.max(0, parseInt(req.query.skip || "0", 10));
+const NextSkipValue = (currentSkipValue) => {
+  return Math.max(0, parseInt(currentSkipValue || "0", 10));
 }
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
 
       const dataPipeline = [
         { $match: { user: mongoose.Types.ObjectId(req.user.id) } },
-        { $skip: NextSkipValue(req) },
+        { $skip: NextSkipValue(req.query.skip) },
         { $limit: MaxNumOfDisplayedRecipes },
       ];
 
@@ -42,7 +42,7 @@ module.exports = {
       res.render("profile.ejs", {
         recipes: recipes,
         user: req.user,
-        skip: NextSkipValue(req),
+        skip: NextSkipValue(req.query.skip),
         userRecipeCount,
         currentPage: currentPage,
       });
@@ -57,13 +57,13 @@ module.exports = {
       const totalRecipes = await Recipe.countDocuments();
       const recipes = await Recipe.find()
         .sort({ createdAt: "desc" })
-        .skip(NextSkipValue(req))
+        .skip(NextSkipValue(req.query.skip))
         .limit(MaxNumOfDisplayedRecipes)
         .lean();
       res.render("feed.ejs", {
         recipes: recipes,
         user: req.user,
-        skip: NextSkipValue(req),
+        skip: NextSkipValue(req.query.skip),
         limit: MaxNumOfDisplayedRecipes,
         totalRecipes: totalRecipes,
         currentPage: currentPage,
@@ -183,7 +183,7 @@ module.exports = {
 
       const searchResults = await Recipe.aggregate(searchParams)
         .sort({ createdAt: "desc" })
-        .skip(NextSkipValue(req))
+        .skip(NextSkipValue(req.query.skip))
         .limit(MaxNumOfDisplayedRecipes);
 
       const totalRecipes = searchResults.length;
@@ -200,7 +200,7 @@ module.exports = {
         user: req.user,
         userEnteredSearchTerm: userEnteredSearchTerm,
         recipes: searchResults,
-        skip: NextSkipValue(req),
+        skip: NextSkipValue(req.query.skip),
         limit: MaxNumOfDisplayedRecipes,
         currentPage: currentPage,
       })
