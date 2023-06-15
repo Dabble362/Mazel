@@ -2252,11 +2252,6 @@ body[dir="rtl"] .checkbox:checked,
   margin-bottom: 1rem;
 }
 
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
@@ -2270,16 +2265,16 @@ body[dir="rtl"] .checkbox:checked,
   margin-bottom: 0.75rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
 }
 
 .flex {
@@ -2316,14 +2311,6 @@ body[dir="rtl"] .checkbox:checked,
 
 .max-h-\[450px\] {
   max-height: 450px;
-}
-
-.w-1\/2 {
-  width: 50%;
-}
-
-.w-11\/12 {
-  width: 91.666667%;
 }
 
 .w-12 {
@@ -2560,6 +2547,10 @@ body[dir="rtl"] .checkbox:checked,
   padding-left: 1rem;
 }
 
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -2717,10 +2708,6 @@ body[dir="rtl"] .checkbox:checked,
 .file\:text-forest-green::file-selector-button {
   --tw-text-opacity: 1;
   color: rgb(7 61 0 / var(--tw-text-opacity));
-}
-
-.hover\:border:hover {
-  border-width: 1px;
 }
 
 .hover\:file\:bg-success-green::file-selector-button:hover {

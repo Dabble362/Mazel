@@ -7,7 +7,8 @@
         <section class="flex flex-col w-full bg-base-100 border-2 rounded border-black shadow-solid-black
         border-2 border-black py-6 px-4 w-3/4 mx-auto items-center">
           <div class="flex flex-col ">
-            <img class="img-fluid bg-base-100 shadow-solid-primary object-center object-cover h-[400px] w-[800px]"
+            <img
+              class="img-fluid bg-base-100 border-black border-2 shadow-solid-primary object-center object-cover h-[400px] w-[800px]"
               src="<%= recipe.image%>" />
             <h2 class="mt-8 mb-2 text-4xl text-center font-bold text-dark-slate-gray">
               <%= recipe.name %>
@@ -52,62 +53,68 @@
               </div>
         </section>
         <!-- recipe ingredients -->
-        <div class="flex flex-col w-9/12">
-          <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Ingredients</h3>
+        <div class="flex justify-center w-full bg-base-100 border-2 rounded border-black shadow-solid-black">
+          <div class="flex flex-col w-9/12 justify-center">
+            <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray py-3">Ingredients</h3>
 
-          <% if(Array.isArray(recipe.ingredients)) { %>
-            <ul class="text-dark-slate-gray text-lg list-disc">
-              <% for(let i=0; i < recipe.ingredients.length; i++) { %>
-                <li class="text-dark-slate-gray text-lg py-3">
-                  <%=recipe.ingredients[i]%>
-                </li>
-                <%}%>
-            </ul>
-            <% } else { %>
-              <p class="text-dark-slate-gray text-lg">
-                <%=recipe.ingredients%>
-              </p>
-              <% } %>
-
+            <% if(Array.isArray(recipe.ingredients)) { %>
+              <ul class="text-dark-slate-gray text-lg list-disc">
+                <% for(let i=0; i < recipe.ingredients.length; i++) { %>
+                  <li class="text-dark-slate-gray text-lg py-3">
+                    <%=recipe.ingredients[i]%>
+                  </li>
+                  <%}%>
+              </ul>
+              <% } else { %>
+                <p class="text-dark-slate-gray text-lg">
+                  <%=recipe.ingredients%>
+                </p>
+                <% } %>
+          </div>
         </div>
         <!-- recipe directions -->
-        <div class="flex flex-col w-9/12">
-          <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Directions</h3>
-          <% if(Array.isArray(recipe.directions)) { %>
-            <ul class="text-dark-slate-gray text-lg list-decimal">
-              <% for(let i=0; i < recipe.directions.length; i++) { %>
-                <li class="text-dark-slate-gray text-lg py-3">
-                  <%=recipe.directions[i]%>
-                </li>
-                <%}%>
-            </ul>
-            <% } else { %>
-              <p class="text-dark-slate-gray text-lg">
-                <%=recipe.directions%>
-              </p>
-              <% } %>
+        <div class="flex justify-center w-full bg-base-100 border-2 rounded border-black shadow-solid-black">
+          <div class="flex flex-col w-9/12 justify-center">
+            <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray py-3">Directions</h3>
+            <% if(Array.isArray(recipe.directions)) { %>
+              <ul class="text-dark-slate-gray text-lg list-decimal">
+                <% for(let i=0; i < recipe.directions.length; i++) { %>
+                  <li class="text-dark-slate-gray text-lg py-3">
+                    <%=recipe.directions[i]%>
+                  </li>
+                  <%}%>
+              </ul>
+              <% } else { %>
+                <p class="text-dark-slate-gray text-lg">
+                  <%=recipe.directions%>
+                </p>
+                <% } %>
+          </div>
         </div>
         <!-- recipe comments -->
-        <div class="flex flex-col w-9/12">
-          <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Comments</h3>
-          <% for(var i=0; i<comment.length; i++) {%>
-            <li class="text-dark-slate-gray text-lg">
-              <%= comment[i].comment %>
-            </li>
-            <% } %>
-              <!--comment form-->
-              <div class="flex flex-col">
-                <form action="/comment/createComment/<%= recipe.id %>" method="POST">
-                  <div class="text-lg text-dark-slate-gray border-t-2 border-forest-green">
-                    <input type="text" class="bg-white input input-bordered w-full max-w-xs my-4" id="comment"
-                      name="comment" placeholder="Enter comment here!" />
-                  </div>
-                  <button type="submit" class="btn btn-outline btn-success" value="Upload">
-                    ADD A COMMENT
-                  </button>
-                </form>
-              </div>
+        <div class="flex justify-center w-full bg-base-100 border-2 rounded border-black shadow-solid-black">
+          <div class="flex flex-col w-9/12 justify-center">
+            <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray py-3">Comments</h3>
+            <ul>
+              <% for(var i=0; i<comment.length; i++) {%>
+                <li class="text-dark-slate-gray border-2 pl-2 border-black shadow-solid-black py-2 rounded text-lg">
+                  <%= comment[i].comment %>
+                </li>
+                <% } %>
+            </ul>
+            <!--comment form-->
+            <div class="flex flex-col">
+              <form action="/comment/createComment/<%= recipe.id %>" method="POST">
+                <div class="text-lg text-dark-slate-gray border-t-2 border-forest-green">
+                  <input type="text" class="bg-white input input-bordered w-full max-w-xs my-4" id="comment"
+                    name="comment" placeholder="Enter comment here!" />
+                </div>
+                <button type="submit" class="btn btn-outline btn-success" value="Upload">
+                  ADD A COMMENT
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <%- include('partials/createRecipeModal') %>
+      <%- include('partials/createRecipeModal') %>
