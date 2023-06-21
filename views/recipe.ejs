@@ -4,7 +4,7 @@
 
       <div class="flex flex-col w-4/6 mx-auto items-center">
         <!-- recipe name, image, and options-->
-        <section class="flex flex-col w-full bg-base-100 border-2 rounded border-black shadow-solid-black
+        <section class="flex flex-col w-full bg-[#b7ffbbf3] border-2 rounded border-black shadow-solid-black
         border-2 border-black py-6 px-4 w-3/4 mx-auto items-center">
           <div class="flex flex-col ">
             <img
@@ -22,7 +22,7 @@
             <div class="flex w-full flex-col">
 
               <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray pb-3">Description</h3>
-              <p class="text-dark-slate-gray text-lg">
+              <p class="text-dark-slate-gray text-2xl">
                 <%=recipe.description%>
               </p>
 
@@ -31,7 +31,8 @@
               <div class="flex mx-auto flex-row w-full mt-2">
                 <!-- Like a recipe button -->
                 <form class="flex flex-1" action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT" method="POST">
-                  <button class="btn btn-outline border-2 border-black shadow-solid-black btn-success fa fa-heart"
+                  <button
+                    class="btn bg-white btn-outline border-2 border-black shadow-solid-black btn-success fa fa-heart"
                     type="submit"></button>
                   <!-- Display likes -->
                   <h3 class="my-auto pl-4 text-2xl font-bold text-dark-slate-gray">Likes: <%= recipe.likes %>
@@ -39,65 +40,68 @@
                 </form>
                 <!-- Favorite a recipe button-->
                 <form class="flex-1" action="/recipe/favoriteRecipe/<%= recipe.id %>" method="POST">
-                  <button class="btn btn-outline btn-success border-2 border-black shadow-solid-black" type="submit">Add
+                  <button class="btn btn-outline bg-white btn-success border-2 border-black shadow-solid-black"
+                    type="submit">Add
                     to Favorites</button>
                 </form>
                 <!-- Delete recipe button-->
                 <%if(recipe.user==user.id){ %>
                   <form action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE" method="POST"
                     class="flex justify-end flex-1">
-                    <button class="btn btn-outline btn-success fa fa-trash border-2 border-black shadow-solid-black"
+                    <button
+                      class="btn btn-outline btn-success bg-white fa fa-trash border-2 border-black shadow-solid-black"
                       type="submit"></button>
                   </form>
                   <%}%>
               </div>
         </section>
         <!-- recipe ingredients -->
-        <div class="flex justify-center w-full bg-base-100 border-2 rounded border-black shadow-solid-black">
+        <div class="flex justify-center w-full bg-[#ffd5e7ef] border-2 rounded border-black shadow-solid-black">
           <div class="flex flex-col w-9/12 justify-center">
             <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray py-3">Ingredients</h3>
 
             <% if(Array.isArray(recipe.ingredients)) { %>
-              <ul class="text-dark-slate-gray text-lg list-disc">
+              <ul class="text-dark-slate-gray text-2xl list-disc">
                 <% for(let i=0; i < recipe.ingredients.length; i++) { %>
-                  <li class="text-dark-slate-gray text-lg py-3">
+                  <li class="text-dark-slate-gray text-2xl py-3">
                     <%=recipe.ingredients[i]%>
                   </li>
                   <%}%>
               </ul>
               <% } else { %>
-                <p class="text-dark-slate-gray text-lg">
+                <p class="text-dark-slate-gray text-2xl">
                   <%=recipe.ingredients%>
                 </p>
                 <% } %>
           </div>
         </div>
         <!-- recipe directions -->
-        <div class="flex justify-center w-full bg-base-100 border-2 rounded border-black shadow-solid-black">
+        <div class="flex justify-center w-full bg-[#b7f5fff3] border-2 rounded border-black shadow-solid-black">
           <div class="flex flex-col w-9/12 justify-center">
             <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray py-3">Directions</h3>
             <% if(Array.isArray(recipe.directions)) { %>
-              <ul class="text-dark-slate-gray text-lg list-decimal">
+              <ul class="text-dark-slate-gray text-2xl list-decimal">
                 <% for(let i=0; i < recipe.directions.length; i++) { %>
-                  <li class="text-dark-slate-gray text-lg py-3">
+                  <li class="text-dark-slate-gray text-2xl py-3">
                     <%=recipe.directions[i]%>
                   </li>
                   <%}%>
               </ul>
               <% } else { %>
-                <p class="text-dark-slate-gray text-lg">
+                <p class="text-dark-slate-gray text-2xl">
                   <%=recipe.directions%>
                 </p>
                 <% } %>
           </div>
         </div>
         <!-- recipe comments -->
-        <div class="flex justify-center w-full bg-base-100 border-2 rounded border-black shadow-solid-black">
+        <div class="flex justify-center w-full bg-[#fffbbdf4] border-2 rounded border-black shadow-solid-black">
           <div class="flex flex-col w-9/12 justify-center">
-            <h3 class="border-b-2 text-3xl font-bold border-forest-green text-dark-slate-gray py-3">Comments</h3>
+            <h3 class="border-b-2 text-3xl mb-4 font-bold border-forest-green text-dark-slate-gray py-3">Comments</h3>
             <ul>
               <% for(var i=0; i<comment.length; i++) {%>
-                <li class="text-dark-slate-gray border-2 pl-2 border-black shadow-solid-black py-2 rounded text-lg">
+                <li
+                  class="text-dark-slate-gray bg-white border-2 pl-2 border-black shadow-solid-black my-2 py-2 rounded text-lg">
                   <%= comment[i].comment %>
                 </li>
                 <% } %>
@@ -105,7 +109,7 @@
             <!--comment form-->
             <div class="flex flex-col">
               <form action="/comment/createComment/<%= recipe.id %>" method="POST">
-                <div class="text-lg text-dark-slate-gray border-t-2 border-forest-green">
+                <div class="text-lg text-dark-slate-gray border-forest-green">
                   <input type="text" class="bg-white input input-bordered w-full max-w-xs my-4" id="comment"
                     name="comment" placeholder="Enter comment here!" />
                 </div>

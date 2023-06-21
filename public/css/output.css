@@ -2265,6 +2265,10 @@ body[dir="rtl"] .checkbox:checked,
   margin-bottom: 0.75rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -2429,10 +2433,6 @@ body[dir="rtl"] .checkbox:checked,
   border-bottom-width: 4px;
 }
 
-.border-t-2 {
-  border-top-width: 2px;
-}
-
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
@@ -2462,12 +2462,111 @@ body[dir="rtl"] .checkbox:checked,
   background-color: rgb(255 255 255 / 0.5);
 }
 
+.bg-\[\#fff57341\] {
+  background-color: #fff57341;
+}
+
+.bg-amber-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 119 6 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f57341\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 115 65 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f57441c9\] {
+  background-color: #f57441c9;
+}
+
+.bg-\[\#f57441e4\] {
+  background-color: #f57441e4;
+}
+
+.bg-\[\#f57441ef\] {
+  background-color: #f57441ef;
+}
+
+.bg-\[\#F45C57\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 92 87 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f45c57f3\] {
+  background-color: #f45c57f3;
+}
+
+.bg-\[\#ffb065f3\] {
+  background-color: #ffb065f3;
+}
+
+.bg-\[\#ffd665f3\] {
+  background-color: #ffd665f3;
+}
+
+.bg-\[\#ff8a8aef\] {
+  background-color: #ff8a8aef;
+}
+
+.bg-\[\#b7ffbbf3\] {
+  background-color: #b7ffbbf3;
+}
+
+.bg-\[\#f6fe65f3\] {
+  background-color: #f6fe65f3;
+}
+
+.bg-\[\#cef5ffef\] {
+  background-color: #cef5ffef;
+}
+
+.bg-\[\#ffd5e7ef\] {
+  background-color: #ffd5e7ef;
+}
+
+.bg-\[\#ffd5e700\] {
+  background-color: #ffd5e700;
+}
+
+.bg-\[\#b7f5fff3\] {
+  background-color: #b7f5fff3;
+}
+
+.bg-\[\#fffbbdf4\] {
+  background-color: #fffbbdf4;
+}
+
+.bg-opacity-25 {
+  --tw-bg-opacity: 0.25;
+}
+
+.bg-opacity-100 {
+  --tw-bg-opacity: 1;
+}
+
+.bg-opacity-0 {
+  --tw-bg-opacity: 0;
+}
+
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
+}
+
+.bg-opacity-90 {
+  --tw-bg-opacity: 0.9;
+}
+
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
 .bg-veggie-top {
   background-image: url('../imgs/veggietoplong.jpg');
+}
+
+.bg-ingredients {
+  background-image: url('../imgs/ingredients.jpg');
 }
 
 .from-base-100 {
@@ -2531,6 +2630,11 @@ body[dir="rtl"] .checkbox:checked,
   padding-bottom: 1.5rem;
 }
 
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -2543,12 +2647,12 @@ body[dir="rtl"] .checkbox:checked,
   padding-bottom: 2rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
-}
-
 .pl-2 {
   padding-left: 0.5rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
 }
 
 .text-center {
