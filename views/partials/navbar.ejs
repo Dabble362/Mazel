@@ -16,50 +16,30 @@
             <li>
               <label for="my-modal-6" class="btn btn-outline btn-success flex-1">Create Recipe</label>
             </li>
-            <% if(currentPage==='favorites' ) { %>
-
+            <%
+            const pages={
+              "favorites" : ["/profile", "/feed" ],
+              "feed" : ["/profile", "/favorites" ],
+              "recipe" : ["/profile", "/favorites" , "/feed" ],
+              "searchResults" : ["/profile", "/favorites" , "/feed" ],
+              "profile" : ["/favorites", "/feed" ],
+            };
+            const pageNames={
+              "/profile" : "Profile" ,
+              "/favorites" : "Favorites",
+              "/feed" : "Feed" ,
+            };
+            if(pages[currentPage]) {
+              pages[currentPage].forEach((route) => { %>
               <li>
-                <a href="/profile" class="btn btn-outline btn-success flex-1">Profile</a>
+                <a href="<%= route %>" class="btn btn-outline btn-success flex-1">
+                  <%= pageNames[route] %>
+                </a>
               </li>
-              <li>
-                <a href="/feed" class="btn btn-outline btn-success flex-1">Feed</a>
-              </li>
-
-              <% } else if(currentPage==='feed' ) { %>
-
+              <% }); } %>
                 <li>
-                  <a href="/profile" class="btn btn-outline btn-success flex-1">Profile</a>
+                  <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a>
                 </li>
-                <li>
-                  <a href="/favorites" class="btn btn-outline btn-success flex-1">Favorites</a>
-                </li>
-
-                <% } else if(currentPage==='recipe' ) { %>
-
-                  <li>
-                    <a href="/profile" class="btn btn-outline btn-success flex-1">Profile</a>
-                  </li>
-                  <li>
-                    <a href="/favorites" class="btn btn-outline btn-success flex-1">Favorites</a>
-                  </li>
-                  <li>
-                    <a href="/feed" class="btn btn-outline btn-success flex-1">Feed</a>
-                  </li>
-
-                  <% } else if(currentPage==='profile' ) { %>
-
-                    <li>
-                      <a href="/favorites" class="btn btn-outline btn-success flex-1">Favorites</a>
-                    </li>
-                    <li>
-                      <a href="/feed" class="btn btn-outline btn-success flex-1">Feed</a>
-                    </li>
-
-                    <% } %>
-
-                      <li>
-                        <a href="/logout" class="flex-1 btn btn-outline btn-success w-full">Logout</a>
-                      </li>
           </ul>
         </div>
       </div>
@@ -74,7 +54,7 @@
       <div class="md:navbar-end">
         <form method="POST" name="" action="/recipe/searchRecipes">
           <div class="form-control w-[250px] shadow-solid-black rounded border-2 border-black">
-            <input type="text" id="searchBar" class="input input-bordered" name="searchQuery" />
+            <input type="text" id="searchBar" class="input input-bordered text-dark-slate-gray" name="searchQuery" />
           </div>
         </form>
       </div>
