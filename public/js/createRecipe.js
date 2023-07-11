@@ -4,49 +4,40 @@ const commonClassList = [
   "my-2",
 ]
 
+const buttonArgs = {
+  ingredients: {
+    button: "#add-ingredient-btn",
+    input: "input",
+    name: "ingredients[]",
+    placeholderPrefix: "Ingredient",
+    classList: ["input", "input-bordered", "w-full", "max-w-xs"],
+    parent: "#recipe-form",
+    counter: 2,
+  },
+  steps: {
+    button: "#add-steps-btn",
+    input: "textarea",
+    name: "directions[]",
+    placeholderPrefix: "Step",
+    classList: ["textarea", "textarea-bordered", "h-22"],
+    parent: "#directions-form",
+    counter: 2,
+  },
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  const addIngredientButton = document.querySelector("#add-ingredient-btn");
-  let ingredientCount = 2;
+  Object.keys(buttonArgs).forEach((key) => {
+    const button = document.querySelector(buttonArgs[key].button);
 
-  addIngredientButton.addEventListener("click", () => {
-    console.log("The add ingredient button has been clicked!");
-
-    const input = document.createElement("input");
-    input.type = "text";
-    input.name = `ingredients[]`;
-    input.placeholder = `ingredient ${ingredientCount}`;
-    commonClassList.forEach((className) => input.classList.add(className));
-    input.classList.add(
-      "input",
-      "input-bordered",
-      "w-full",
-      "max-w-xs",
-    );
-
-    const ingredientForm = document.querySelector("#recipe-form");
-    ingredientForm.insertBefore(input, addIngredientButton);
-    ingredientCount++;
-  });
-
-  const addStepButton = document.querySelector("#add-steps-btn");
-  let stepsCount = 2;
-
-  addStepButton.addEventListener("click", () => {
-    console.log("The add step button has been clicked!");
-
-    const textArea = document.createElement("textarea");
-    textArea.type = "text";
-    textArea.name = `directions[]`;
-    textArea.placeholder = `step # ${stepsCount}`;
-    commonClassList.forEach((className) => textArea.classList.add(className));
-    textArea.classList.add(
-      "textarea",
-      "textarea-bordered",
-      "h-22",
-    );
-
-    const directionsForm = document.querySelector("#directions-form");
-    directionsForm.insertBefore(textArea, addStepButton);
-    stepsCount++;
+    button.addEventListener("click", () => {
+      const element = document.createElement(buttonArgs[key].input);
+      element.type = "text";
+      element.name = buttonArgs[key].name;
+      element.placeholder = `${buttonArgs[key].placeholderPrefix} ${buttonArgs[key].counter}`;
+      commonClassList.forEach((className) => element.classList.add(className));
+      element.classList.add(...buttonArgs[key].classList);
+      document.querySelector(buttonArgs[key].parent).insertBefore(element, button);
+      buttonArgs[key].counter += 1;
+    });
   });
 });
