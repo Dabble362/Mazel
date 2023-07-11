@@ -15,7 +15,7 @@ router.post(
 
 router.post("/searchRecipes", recipesController.searchRecipe);
 
-router.put("/likeRecipe/:id", recipesController.likeRecipe);
+router.post("/likeRecipe/:id", recipesController.likeRecipe);
 
 router.post("/favoriteRecipe/:id", recipesController.favoriteRecipe);
 

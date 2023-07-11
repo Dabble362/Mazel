@@ -11,9 +11,9 @@ const NextSkipValue = (currentSkipValue) => {
 
 module.exports = {
   getProfile: async (req, res) => {
+    console.log("getProfile was invoked");
     const currentPage = "profile";
     console.log(currentPage);
-    console.log("getProfile was invoked");
     try {
       //since we have a session each request contains the logged in user's
       //info: req.user
@@ -51,6 +51,7 @@ module.exports = {
     }
   },
   getFeed: async (req, res) => {
+    console.log("getFeed was invoked");
     const currentPage = "feed";
     console.log(currentPage);
     try {
@@ -73,10 +74,9 @@ module.exports = {
     }
   },
   getRecipe: async (req, res) => {
+    console.log("getRecipe was invoked");
     const currentPage = "recipe";
-    console.log(currentPage);
     try {
-      console.log("getRecipe was invoked");
       console.log(req.params);
       const comment = await Comment.find({ postId: req.params.id });
       console.log("comment: ", comment);
@@ -92,6 +92,7 @@ module.exports = {
     }
   },
   createRecipe: async (req, res) => {
+    console.log("createRecipe was invoked");
     try {
       console.log(`attempting to submit recipe!`);
       // Upload image to cloudinary
@@ -105,7 +106,7 @@ module.exports = {
       console.log("Ingredients: ", req.body.ingredients);
       console.log("Directions: ", req.body.directions);
       await Recipe.create({
-        name: req.body.name,
+        name: req.body.recipeName,
         image: result.secure_url,
         cloudinaryId: result.public_id,
         description: req.body.description,
@@ -123,6 +124,7 @@ module.exports = {
     }
   },
   favoriteRecipe: async (req, res) => {
+    console.log("favoriteRecipe was invoked");
     try {
       await Favorite.create({
         user: req.user.id,
@@ -135,8 +137,8 @@ module.exports = {
     }
   },
   likeRecipe: async (req, res) => {
+    console.log("likeRecipe was invoked");
     try {
-      console.log("Likes +1");
       await Recipe.findOneAndUpdate(
         { _id: req.params.id },
         {
@@ -149,7 +151,7 @@ module.exports = {
     }
   },
   searchRecipe: async (req, res) => {
-    console.log("🔎 The search button is working.");
+    console.log("searchRecipe was invoked");
     console.log("Query params:", req.query);
     const currentPage = "searchResults";
     try {
@@ -211,7 +213,7 @@ module.exports = {
     }
   },
   deleteRecipe: async (req, res) => {
-    console.log('   deleteRecipe was invoked')
+    console.log('deleteRecipe was invoked');
     try {
       const recipeDbId = req.params.id;
       console.log("   Finding recipe id: ", recipeDbId);
