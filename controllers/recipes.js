@@ -106,7 +106,7 @@ module.exports = {
       console.log("Ingredients: ", req.body.ingredients);
       console.log("Directions: ", req.body.directions);
       await Recipe.create({
-        name: req.body.name,
+        name: req.body.recipeName,
         image: result.secure_url,
         cloudinaryId: result.public_id,
         description: req.body.description,
