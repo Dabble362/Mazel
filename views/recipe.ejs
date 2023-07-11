@@ -30,7 +30,7 @@
             <%}%>
               <div class="flex mx-auto flex-row w-full mt-2">
                 <!-- Like a recipe button -->
-                <form class="flex flex-1" action="/recipe/likeRecipe/<%= recipe.id %>?_method=PUT" method="POST">
+                <form class="flex flex-1" action="/recipe/likeRecipe/<%= recipe.id %>" method="POST">
                   <button
                     class="btn bg-white btn-outline border-2 border-black shadow-solid-black btn-success fa fa-heart"
                     type="submit"></button>
@@ -46,7 +46,7 @@
                 </form>
                 <!-- Delete recipe button-->
                 <%if(recipe.user==user.id){ %>
-                  <form action="/recipe/deleteRecipe/<%= recipe.id %>?_method=DELETE" method="POST"
+                  <form action="/recipe/deleteRecipe/<%= recipe.id %>" method="POST"
                     class="flex justify-end flex-1">
                     <button
                       class="btn btn-outline btn-success bg-white fa fa-trash border-2 border-black shadow-solid-black"
